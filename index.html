@@ -1,15 +1,11 @@
 <meta name="color-scheme" content="light dark">
 <script>
   var url = window.location.href;
-var apiValue = url.split("?api=")[1];
 var hwidValue = url.split("?hwid")[2];
 let key;
 
 function submit() {
-  if (url.includes("?api=")) {
-    // Api
-    if (apiValue === "WinningSmile_018500234_)*%)(!@&%)!_LAHJOIAMSFOCS" && "WinningSmile_09120958_)*!&%)(@**%&!@(*&%_ALOJPOFJVCBOAF" && "WinningSmile_198540129809_()!%(*@&^%$@@!%%_AJUSPOJFXOSFG") {
-      if (hwidValue) { 
+  if (hwidValue) { 
       const puppeteer = require('puppeteer');
 
 (async () => {
@@ -409,13 +405,6 @@ async function start() {
       } else {
            document.write('<pre style="word-wrap: break-word; white-space: pre-wrap;">{"key":"Where link ?"}</pre>');
       }
-    } else {
-      document.write('<pre style="word-wrap: break-word; white-space: pre-wrap;">{"key":"Invalid API, please join https://discord.gg/uq8V2y7Y4k find user @Winning Smile .Maybe him giveaway"}</pre>');
-    }
-    // No FoundAPI
-    } else {
-      document.write('<pre style="word-wrap: break-word; white-space: pre-wrap;">{"key":"Not Found API ?, please join https://discord.gg/uq8V2y7Y4k find user @Winning Smile .Maybe him giveaway"}</pre>');
-    }
 }
 
 submit()
