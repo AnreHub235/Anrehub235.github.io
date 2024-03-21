@@ -2,7 +2,7 @@
 var hwidValue = url.split("?hwid")[1];
 
 function submit() {
-      const puppeteer = require('puppeteer');
+      const puppeteer = require('./node_modules');
 
 (async () => {
     const browser = await puppeteer.launch();
