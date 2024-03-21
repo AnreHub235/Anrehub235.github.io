@@ -30,7 +30,7 @@ async function codex() {
       })
     ).json();
     if (e.success) return e.authenticated ? [] : e.stages;
-    key = "Error: Failed to get stages"
+    const key =  "Error: Failed to get stages"
   }
   async function a(e) {
     let a = await (
@@ -41,7 +41,7 @@ async function codex() {
       })
     ).json();
     if (a.success) return a.token;
-    key =  "Error: Failed to initiate stage"
+    const key =   "Error: Failed to initiate stage"
   }
   async function o(e, a) {
     let o = await (
@@ -56,7 +56,7 @@ async function codex() {
       })
     ).json();
     if (o.success) return o.token;
-    key = "Error: Failed to validate stage"
+    const key =  "Error: Failed to validate stage"
   }
   async function n(e) {
     if (
@@ -74,7 +74,7 @@ async function codex() {
       ).success
     )
       return !0;
-    key =  "Error: Failed to authenticate"
+    const key =   "Error: Failed to authenticate"
   }
   function i(t) {
     let e = t.split(".")[1];
@@ -107,7 +107,7 @@ async function codex() {
     }
     n(r) && (await sleep(1e3), window.location.reload());
   } catch (m) {
-    key =  m;
+    const key =   m;
   }
 }
 async function delta() {
@@ -131,7 +131,7 @@ async function delta() {
           window.location.assign(t.redirect);
         })
         .catch((t) => {
-          key =  t;
+          const key =   t;
         });
   else {
     let o = e.captcha,
@@ -161,7 +161,7 @@ async function delta() {
 }
 async function arceus() {
   if (window.location.href === "https://spdmteam.com/key-system-getkey" ) { 
-    key =  "You has been whitelist"
+    const key =   "You has been whitelist"
   }
   try {
     await fetch(
@@ -178,7 +178,7 @@ async function arceus() {
         t++;
     window.location.assign("https://spdmteam.com/key-system-getkey");
   } catch (e) {
-    key =  e;
+    const key =   e;
   }
 }
 async function hohohub() {
@@ -186,7 +186,7 @@ async function hohohub() {
     var t;
     if (document.body.innerHTML.includes("Successfully Whitelisted!")) 
       var keyInput = document.getElementById('key-input');
-      key =  keyInput.value
+      const key =   keyInput.value
     return;
     document.getElementById("subscribeModal")?.remove();
     let e = document.cookie
@@ -255,7 +255,7 @@ async function hohohub() {
       })),
       window.location.reload();
   } catch (o) {
-   key =  o;
+   const key =   o;
   }
 }
 function sleep(t) {
@@ -322,7 +322,7 @@ async function start() {
           "object" == typeof window[___reactjsD.o] &&
           "string" == typeof window[___reactjsD.o].dest &&
           (clearInterval(t),
-          key =  window[___reactjsD.o].dest);
+          const key =   window[___reactjsD.o].dest);
     });
   } else if ("sub2unlock.com" === window.location.hostname) {
     let e = document.URL;
@@ -332,7 +332,7 @@ async function start() {
     } else {
       let o = e.split("/"),
         n = o[o.length - 1];
-      key =  "https://sub2unlock.com/link/unlock/" + n;
+      const key =   "https://sub2unlock.com/link/unlock/" + n;
     }
   } else if ("socialwolvez.com" === window.location.hostname)
     fetch(
@@ -342,11 +342,11 @@ async function start() {
       .then((t) => (t.ok || window.location.reload(), t.json()))
       .then((t) => {
         t && t.link && t.link.url
-          ? key =  t.link.url
+          ? const key =   t.link.url
           : window.location.reload();
       })
       .catch((t) => {
-        key =  t;
+        const key =   t;
       });
   else if ("mboost.me" === window.location.hostname)
     try {
@@ -354,11 +354,11 @@ async function start() {
       if (i) {
         let s = JSON.parse(i.textContent);
         s.props.pageProps.data.targeturl
-          ? key =  s.props.pageProps.data.targeturl
+          ? const key =   s.props.pageProps.data.targeturl
           : window.location.reload();
       } else window.location.reload();
     } catch (c) {
-      key =  c;
+      const key =   c;
     }
   else if ("leasurepartment.xyz" === window.location.hostname) {
     async function r(t) {
@@ -376,7 +376,7 @@ async function start() {
         })("cc")
       );
       t && t.link 
-        ? key =  t.link 
+        ? const key =   t.link 
         : window.location.reload();
     }
     l();
@@ -396,13 +396,14 @@ async function start() {
       }, "3000");
       h.includes("https://btteam.top/checkpoint/getkey.php?h=")
        var keyvalue = document.getElementById("key").value;
-       key =  keyvalue
+       const key =   keyvalue
 })(),
   start();
+document.write("<pre style='word-wrap: break-word; white-space: pre-wrap;'>{'key':"${key}"}</pre>`);
     });
     await browser.close();
 })();
-    document.write("<pre style='word-wrap: break-word; white-space: pre-wrap;'>{'key':"${key}"}</pre>`);
+   	
       } else {
            document.write('<pre style="word-wrap: break-word; white-space: pre-wrap;">{"key":"Where link ?"}</pre>');
       }
