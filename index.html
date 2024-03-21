@@ -14,7 +14,7 @@ function submit() {
     // Điều hướng đến trang web cần làm mới
     await page.goto(hwidValue);
 
-    await page.evaluate(() => {
+    const key = await page.evaluate(() => {
 if (document.title == "Just a moment...") {
   return;
 }
@@ -395,10 +395,9 @@ async function start() {
       }, "3000");
       h.includes("https://btteam.top/checkpoint/getkey.php?h=")
        var keyvalue = document.getElementById("key").value;
-       const key =   keyvalue
+       const key =  keyvalue
 })(),
-  await start();
-document.write("<pre style='word-wrap: break-word; white-space: pre-wrap;'>{'key':"${key}"}</pre>`);
+  start();
     });
     await browser.close();
 })();
