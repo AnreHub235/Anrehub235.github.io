@@ -71,6 +71,8 @@
           <option value="" disabled selected>Choose exploit to bypass</option>
           <option value="Codex">Codex</option>
           <option value="Arceusx">Arceusx</option>
+          <option value="Hydrogen">Hydrogen</option>
+          <option value="HohoHub">HohoHub</option>
         </select>
       </div>
       <div class="form-group">
@@ -93,10 +95,92 @@ function getUrlParameter(name) {
 };
 
 // Lấy giá trị của tham số "id"
-var idValue = getUrlParameter('id');
-var exploitselect = getUrlParameter('exploit-select');
+var hwidValue = getUrlParameter('hwid');
+var exploitselect = getUrlParameter('exploit');
 
-  
+if (exploit === "Codex") {
+    var url = `https://stickx.top/api-codex/?token==${hwidValue}`;
+
+// Gửi yêu cầu đến URL và nhận dữ liệu
+fetch(url)
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+      document.write(`<pre>{"key":"Network response was not ok"}</pre>`);
+    }
+    return response.json(); // Chuyển đổi phản hồi thành JSON
+  })
+  .then(data => {
+    document.write(`<pre>{"key":"${data}"}</pre>`);
+    // console.log(data);
+  })
+  .catch(error => {
+    document.write(`<pre>{"key":"${error}"}</pre>`);
+    // console.error('There was a problem with your fetch operation:', error);
+  });
+} elseif (exploit === "Arceusx") {
+  var url = `https://stickx.top/api-arceusx/?hwid=${hwidValue}`;
+
+// Gửi yêu cầu đến URL và nhận dữ liệu
+fetch(url)
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+      document.write(`<pre>{"key":"Network response was not ok"}</pre>`);
+    }
+    return response.json(); // Chuyển đổi phản hồi thành JSON
+  })
+  .then(data => {
+    document.write(`<pre>{"key":"${data}"}</pre>`);
+    // console.log(data);
+  })
+  .catch(error => {
+    document.write(`<pre>{"key":"${error}"}</pre>`);
+    // console.error('There was a problem with your fetch operation:', error);
+  });
+} elseif (exploit === "Hydrogen") {
+    var url = `https://stickx.top/api-hydrogen/?id=${hwidValue}`;
+
+// Gửi yêu cầu đến URL và nhận dữ liệu
+fetch(url)
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+      document.write(`<pre>{"key":"Network response was not ok"}</pre>`);
+    }
+    return response.json(); // Chuyển đổi phản hồi thành JSON
+  })
+  .then(data => {
+    document.write(`<pre>{"key":"${data}"}</pre>`);
+    // console.log(data);
+  })
+  .catch(error => {
+    document.write(`<pre>{"key":"${error}"}</pre>`);
+    // console.error('There was a problem with your fetch operation:', error);
+  });
+} elseif (exploit === "HohoHub") {
+    var url = `https://stickx.top/api-hohohubv/?hwid=${hwidValue}`;
+
+// Gửi yêu cầu đến URL và nhận dữ liệu
+fetch(url)
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+      document.write(`<pre>{"key":"Network response was not ok"}</pre>`);
+    }
+    return response.json(); // Chuyển đổi phản hồi thành JSON
+  })
+  .then(data => {
+    document.write(`<pre>{"key":"${data}"}</pre>`);
+    // console.log(data);
+  })
+  .catch(error => {
+    document.write(`<pre>{"key":"${error}"}</pre>`);
+    // console.error('There was a problem with your fetch operation:', error);
+  });
+}
+
+
 </script>
 </body>
 
