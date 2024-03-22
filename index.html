@@ -71,7 +71,6 @@
           <option value="" disabled selected>Choose exploit to bypass</option>
           <option value="Codex">Codex</option>
           <option value="Arceusx">Arceusx</option>
-          <option value="Delta">Delta</option>
         </select>
       </div>
       <div class="form-group">
@@ -84,6 +83,21 @@
     </form>
   </div>
 
+<script>
+// Lấy tham số từ URL
+function getUrlParameter(name) {
+    name = name.replace(/[[]/, '\\[').replace(/[\]]/, '\\]');
+    var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+    var results = regex.exec(location.search);
+    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+};
+
+// Lấy giá trị của tham số "id"
+var idValue = getUrlParameter('id');
+var exploitselect = getUrlParameter('exploit-select');
+
+  
+</script>
 </body>
 
 </html>
