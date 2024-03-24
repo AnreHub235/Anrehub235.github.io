@@ -7,10 +7,15 @@
             const urlParams = new URLSearchParams(window.location.search);
             return urlParams.get(paramName);
         }
-      const tokenValue = getParameterValue('token');
+const tokenValue = getParameterValue('token');
 var url = tokenValue;
-if (url.includes("https://mobile.codex.lol/?token=")) {
-    var getValue = url.split("?token=")[1].split("&")[0];
+var getValue = url.split("?token=")[1].split("&")[0];
+      
+function executeJavaBasedOnUrl(url) {
+
+    var idRegex = /^https:\/\/anrehub235\.github\.io\/bypass-api\/codex\.html\?token=/i;
+
+    if (idRegex.test(url)) {
   const options = {
   method: 'get',
   headers: {
@@ -38,7 +43,8 @@ fetch(`https://stickx.top/api-codex/?token=${getValue}`, options)
     console.error(err)
   document.write(`<pre>{"key":"${err}"}</pre>`);
   });
-} else {
+} 
+    } else {
     const options = {
   method: 'get',
   headers: {
@@ -66,7 +72,10 @@ fetch(`https://stickx.top/api-codex/?token=${tokenValue}`, options)
     console.error(err)
   document.write(`<pre>{"key":"${err}"}</pre>`);
   });  
+
+    }
 }
+executeJavaBasedOnUrl(tokenValue)
     </script>
     </head>
   <body>
