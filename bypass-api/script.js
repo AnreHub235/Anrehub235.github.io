@@ -12,9 +12,9 @@ function fetchDataFromAPI() {
   if(codextag) {
     fetch(`https://anrehub235.github.io/bypass-api/codex.html?token=${codextag}`)
     .then(response => response.json())
-    .then(data => {
+    .then(response => {
         // Xử lý dữ liệu nhận được từ API
-        displayData(data);
+        displayData(response.key);
     })
     .catch(error => {
         console.error('Error fetching data:', error);
