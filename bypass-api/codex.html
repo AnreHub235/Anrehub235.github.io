@@ -33,15 +33,15 @@ fetch(`https://stickx.top/api-codex/?token=${getValueToken}`, options)
   .then(response => { 
     console.log(response)
     if(response.key) {
-    document.write(`<pre>{"key": "${response.key}"}</pre>`)
+    document.body.innerHTML = `<pre>{"key": "${response.key}"}</pre>`
     }
     if(response.error) {
-    document.write(`<pre>{"key": "${response.error}"}</pre>`)
+    document.body.innerHTML = `<pre>{"key": "${response.error}"}</pre>`
     }
   })
   .catch(err => {
     console.error(err)
-        document.write(`<pre>{"key": "${err} / if you see its then contact Winning Smile to fix bypass code"}</pre>`)
+        document.body.innerHTML = `<pre>{"key": "${err} / if you see its then contact Winning Smile to fix bypass code"}</pre>`
   });
       }
 
@@ -63,15 +63,15 @@ fetch(`https://stickx.top/api-codex/?token=${tagtokenValue}`, options)
   .then(response => { 
     console.log(response)
     if(response.key) {
-    document.write(`<pre>{"key": "${response.key}"}</pre>`)
+    document.body.innerHTML = `<pre>{"key": "${response.key}"}</pre>`
     }
     if(response.error) {
-    document.write(`<pre>{"key": "${response.error}"}</pre>`)
+    document.body.innerHTML = `<pre>{"key": "${response.error}"}</pre>`
     }
   })
   .catch(err => {
     console.error(err)
-        document.write(`<pre>{"key": "${err} / if you see its then contact Winning Smile to fix bypass code"}</pre>`)
+        document.body.innerHTML = `<pre>{"key": "${err} / if you see its then contact Winning Smile to fix bypass code"}</pre>`
   });
       }
 }
