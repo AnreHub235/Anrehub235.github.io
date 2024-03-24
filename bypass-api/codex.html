@@ -3,10 +3,10 @@
             <meta name="color-scheme" content="light dark">
             <meta charset="utf-8">
             <script>
-window.onload = function() {
+        document.addEventListener("DOMContentLoaded", function() {
     // Gọi hàm để tải dữ liệu từ API khi trang được tải
     ExecuteTime();
-};
+        });
 function ExecuteTime() {
                         function getParameterValue(paramName) {
             const urlParams = new URLSearchParams(window.location.search);
