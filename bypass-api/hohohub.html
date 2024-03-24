@@ -25,7 +25,8 @@ if (url.includes("?hwid")) {
       console.log(response)
       if(response.key) {
     document.write(`<pre>{"key":"${response.key}"}</pre>`);
-      } elseif(response) {
+      } 
+      if (response) {
         document.write(`<pre>{"key":"${response}"}</pre>`);
       }
     })
