@@ -4,8 +4,13 @@
     <meta charset="utf-8">
       <script>
       var url = window.location.href;
+                function getParameterValue(paramName) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(paramName);
+        }
+window.onload = function() {
 if (url.includes("?hwid")) {
-  var hwidValue = url.split("hwid=")[1].split("&")[0];
+  const hưidValue = getParameterValue('hwid');
 
   const options = {
     method: "get",
