@@ -5,8 +5,9 @@
 </head>
             <body>            <script>
         document.addEventListener("DOMContentLoaded", function() {
+            await ExecuteTime();
 function ExecuteTime() {
-                        function getParameterValue(paramName) {
+        function getParameterValue(paramName) {
             const urlParams = new URLSearchParams(window.location.search);
             return urlParams.get(paramName);
         }
@@ -71,7 +72,7 @@ fetch(`https://stickx.top/api-codex/?token=${tagtokenValue}`, options)
     console.error(err)
         document.body.innerHTML = `<pre>{"key": "${err} / if you see its then contact Winning Smile to fix bypass code"}</pre>`
   });
-      }
+}
 }
 });
             </script>
