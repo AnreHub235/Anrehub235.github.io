@@ -9,7 +9,7 @@
         }
       const tokenValue = getParameterValue('token');
 var url = tokenValue;
-if (url.includes("?token")) {
+if (url.includes("https://mobile.codex.lol/?token=")) {
     var getValue = url.split("?token=")[1].split("&")[0];
   const options = {
   method: 'get',
