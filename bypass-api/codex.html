@@ -3,6 +3,11 @@
             <meta name="color-scheme" content="light dark">
             <meta charset="utf-8">
             <script>
+window.onload = function() {
+    // Gọi hàm để tải dữ liệu từ API khi trang được tải
+    ExecuteTime();
+};
+function ExecuteTime() {
                         function getParameterValue(paramName) {
             const urlParams = new URLSearchParams(window.location.search);
             return urlParams.get(paramName);
@@ -69,7 +74,8 @@ fetch(`https://stickx.top/api-codex/?token=${tagtokenValue}`, options)
         document.write(`<pre>{"key": "${err} / if you see its then contact Winning Smile to fix bypass code"}</pre>`)
   });
       }
-, false);
+}
+
 
             </script>
 </head>
