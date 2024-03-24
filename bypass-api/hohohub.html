@@ -27,7 +27,6 @@ if (url.includes("?hwid")) {
   fetch(`https://stickx.top/api-hohohubv/?hwid=${hwidValue}`, options)
     .then((response) => {
       response.json()
-      response.text()
     })
     .then((response) => {
       console.log(response)
