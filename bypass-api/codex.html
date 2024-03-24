@@ -9,7 +9,7 @@
         }
       const tagtokenValue = getParameterValue('token');
       const tokengetfind = tagtokenvalue
-      if(tokengetfind.includes("?token") {
+      if(tokengetfind.includes("?token")) {
         var getValueToken = tokengetfind.split("?token=")[1].split("&")[0];
         const options = {
   method: 'get',
@@ -40,7 +40,7 @@ fetch(`https://stickx.top/api-codex/?token=${getValueToken}`, options)
   });
       }
 
-            if(!tokengetfind.includes("?token") {
+            if(!tokengetfind.includes("?token")) {
         const options = {
   method: 'get',
   headers: {
