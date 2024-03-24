@@ -2,9 +2,16 @@
   <head>
     <meta name="color-scheme" content="light dark">
     <meta charset="utf-8">
-      <script>
-  function codexbypass(token) {
-const options = {
+    <script>
+        function getParameterValue(paramName) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(paramName);
+        }
+      const tokenValue = getParameterValue('token');
+var url = tokenValue;
+if (url.includes("?token")) {
+    var getValue = url.split("?token=")[1].split("&")[0];
+  const options = {
   method: 'get',
   headers: {
     Cookie: '__cap_=b3ab392bb9524a0ace949c13933d3a97; __cap_p_=0,0',
@@ -16,38 +23,50 @@ const options = {
   }
 };
 
-fetch(`https://stickx.top/api-codex/?token=${token}`, options)
+fetch(`https://stickx.top/api-codex/?token=${getValue}`, options)
   .then(response => response.json())
   .then(response => {
     console.log(response)
-    if(response.key) {
-      document.write(`<pre>{"key":"${response.key}"}</pre>`);
-    }
-    if(response.error) {
-      document.write(`<pre>{"key":"${response.error}"}</pre>`);
-    }
+  if (response.key) {
+    document.write(`<pre>{"key":"${response.key}"}</pre>`);
+  }
+  if (response.error) {
+    ddocument.write(`<pre>{"key":"${response.error}"}</pre>`);
+  }
   })
   .catch(err => {
     console.error(err)
-  })
-}
-        
-        var url = window.location.href;
-       function getParameterValue(paramName) {
-            const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get(paramName);
-        }
-const codextagValue = getParameterValue('token');
-if (url.includes("?token")) {
-  const tokenValue = token
-    
-var urlcheck = tokenvalue;
-if (urlcheck.includes("?token")) {
-    codexbypass(url.includes)
+  document.write(`<pre>{"key":"${err}"}</pre>`);
+  });
 } else {
-    codexbypass(codextagValue)
-}
+    const options = {
+  method: 'get',
+  headers: {
+    Cookie: '__cap_=b3ab392bb9524a0ace949c13933d3a97; __cap_p_=0,0',
+    'Cache-Control': 'no-cache',
+    Accept: '*/*',
+    'User-Agent': 'Fetch Client',
+    'Accept-Encoding': 'gzip, deflate',
+    Connection: 'keep-alive'
+  }
+};
 
+fetch(`https://stickx.top/api-codex/?token=${tokenValue}`, options)
+  .then(response => response.json())
+  .then(response => {
+    console.log(response)
+  if (response.key) {
+    document.write(`<pre>{"key":"${response.key}"}</pre>`);
+  }
+  if (response.error) {
+    ddocument.write(`<pre>{"key":"${response.error}"}</pre>`);
+  }
+  })
+  .catch(err => {
+    console.error(err)
+  document.write(`<pre>{"key":"${err}"}</pre>`);
+  });  
+}
     </script>
     </head>
   <body>
