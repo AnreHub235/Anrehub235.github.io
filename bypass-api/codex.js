@@ -1,10 +1,4 @@
-<html>
-  <head>
-    <meta name="color-scheme" content="light dark">
-    <meta charset="utf-8">
-    <script>
-      window.addEventListener('load', function() {
-        function getParameterValue(paramName) {
+function getParameterValue(paramName) {
             const urlParams = new URLSearchParams(window.location.search);
             return urlParams.get(paramName);
         }
@@ -71,11 +65,3 @@ fetch(`https://stickx.top/api-codex/?token=${tagtokenValue}`, options)
   });
       }
 , false);
-    </script>
-    </head>
-  <body>
-
-  <div class="json-formatter-container">
-  </div>
-  </body>
-  </html>
