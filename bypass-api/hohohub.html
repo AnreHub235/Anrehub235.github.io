@@ -1,7 +1,8 @@
 <html>
-  <head><meta name="color-scheme" content="light dark"><meta charset="utf-8"></head>
-  <body>
-    <script>
+  <head>
+    <meta name="color-scheme" content="light dark">
+    <meta charset="utf-8">
+      <script>
       var url = window.location.href;
 if (url.includes("?hwid")) {
   var hwidValue = url.split("hwid=")[1].split("&")[0];
@@ -24,10 +25,15 @@ if (url.includes("?hwid")) {
       console.log(response)
     document.write(`<pre>{"key":"${response}"}</pre>`);
     })
-    .catch((err) => console.error(err));
+    .catch((err) => {
+      console.error(err)
+    document.write(`<pre>{"key":"${err}"}</pre>`);
+    });
 }
-
     </script>
+    </head>
+  <body>
+
   <div class="json-formatter-container">
   </div>
   </body>
