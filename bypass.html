@@ -89,7 +89,6 @@ function getParameterValue(paramName) {
   return urlParams.get(paramName);
 }
 
-window.onload = function () {
   const urlValue = getParameterValue("hwid");
 
   if (urlValue.includes("https://gateway.platoboost.com/a/8")) {
@@ -301,10 +300,8 @@ fetch(`https://stickx.top/api-vegax/?hwid=${getHwidVegax}&api_key=${API_Key}`, o
               })
               .catch((err) => console.error(err));
           }
-          if (!FindHohoHwid.includes("?hwid")) {
-          }
         }
-          
+  }
       };
     </script>
 
