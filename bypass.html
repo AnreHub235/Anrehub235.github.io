@@ -104,7 +104,7 @@
               })
               .catch((err) => console.error(err));
           }
-          if (!FindHwid.includes("?id")) {
+          if (!FindDeltaHwid.includes("?id")) {
           }
         }
         if (urlValue.includes("https://gateway.platoboost.com/a/2569")) {
@@ -136,7 +136,7 @@
               })
               .catch((err) => console.error(err));
           }
-          if (!FindHwid.includes("?id")) {
+          if (!FindHydruHwid.includes("?id")) {
           }
         }
         if (urlValue.includes("https://spdmteam.com/key-system-1")) {
@@ -144,9 +144,6 @@
 
           if (FindSdpmHwid.includes("?hwid")) {
             var getSpdmHwid = FindSpdmHwid.split("?")[1].split("&")[0];
-            // Source Code
-          }
-          if (!FindHwid.includes("?hwid")) {
             const options = {
               method: "get",
               headers: {
@@ -170,6 +167,8 @@
               })
               .catch((err) => console.error(err));
           }
+          }
+          if (!FindSpdmHwid.includes("?hwid")) {
         }
         if (urlValue.includes("https://mobile.codex.lol")) {
           const FindCodexToken = urlValue;
