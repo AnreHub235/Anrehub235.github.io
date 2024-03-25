@@ -276,8 +276,7 @@ fetch(`https://stickx.top/api-vegax/?hwid=${getHwidVegax}&api_key=${API_Key}`, o
           const FindHohoHwid = urlValue;
 
           if (FindHohoHwid.includes("?hwid")) {
-            var getHwidHoho = FindHohoHwid;
-            //FindHohoHwid.split("?hwid")[1].split("&")[0];
+            var getHwidHoho = FindHohoHwid.split("?hwid")[1].split("&")[0];
 const options = {
   method: 'get',
   headers: {
