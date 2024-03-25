@@ -73,199 +73,187 @@
     return urlParams.get(paramName);
   }
   window.onload = function () {
-    const urlValue = getParameterValue("hwid");
-    if (urlValue.includes("https://gateway.platoboost.com/a/8")) {
-      const FindDeltaHwid = urlValue;
+const API_Key = "E99l9NOctud3vmu6bPne";
 
-      if (FindDeltaHwid.includes("?id")) {
-        var getDeltaId = FindDeltaHwid.split("?id")[1].split("&")[0];
+function getParameterValue(paramName) {
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get(paramName);
+}
 
-        const options = {
-          method: "get",
-          headers: {
-            Cookie: "__cap_=b3ab392bb9524a0ace949c13933d3a97; __cap_p_=0,0",
-            "Cache-Control": "no-cache",
-            Accept: "*/*",
-            "User-Agent": "Fetch Client",
-            "Accept-Encoding": "gzip, deflate",
-            Connection: "keep-alive",
-          },
-        };
+window.onload = function () {
+  const urlValue = getParameterValue("hwid");
 
-        fetch(
-          `https://stickx.top/api-delta/?hwid=${getDeltaId}&api_key=${API_Key}`,
-          options
-        )
-          .then((response) => response.json())
-          .then((response) => {
-            console.log(response);
-            window.location.href === `https://anrehub235.github.io/output.html?value=${response.key}`;
-          })
-          .catch((err) => console.error(err));
-      }
-      if (!FindDeltaHwid.includes("?id")) {
-      }
+  if (urlValue.includes("https://gateway.platoboost.com/a/8")) {
+    const FindDeltaHwid = urlValue;
+
+    if (FindDeltaHwid.includes("?id")) {
+      var getDeltaId = FindDeltaHwid.split("?id")[1].split("&")[0];
+
+      const options = {
+        method: "get",
+        headers: {
+          Cookie: "__cap_=b3ab392bb9524a0ace949c13933d3a97; __cap_p_=0,0",
+          "Cache-Control": "no-cache",
+          Accept: "*/*",
+          "User-Agent": "Fetch Client",
+          "Accept-Encoding": "gzip, deflate",
+          Connection: "keep-alive",
+        },
+      };
+
+      fetch(
+        `https://stickx.top/api-delta/?hwid=${getDeltaId}&api_key=${API_Key}`,
+        options
+      )
+        .then((response) => response.json())
+        .then((response) => {
+          console.log(response);
+          window.location.href = `https://anrehub235.github.io/output.html?value=${response.key}`;
+        })
+        .catch((err) => console.error(err));
     }
-        if (urlValue.includes("https://gateway.platoboost.com/a/2569")) {
-          const FindHydruHwid = urlValue;
+  }
 
-          if (FindHydruId.includes("?id")) {
-            var getHydruId = FindHydruId.split("?id")[1].split("&")[0];
-            // Source Code
-            const options = {
-              method: "get",
-              headers: {
-                Cookie: "__cap_=b3ab392bb9524a0ace949c13933d3a97; __cap_p_=0,0",
-                "Cache-Control": "no-cache",
-                Accept: "*/*",
-                "User-Agent": "Fetch Client",
-                "Accept-Encoding": "gzip, deflate",
-                Connection: "keep-alive",
-              },
-            };
+  if (urlValue.includes("https://gateway.platoboost.com/a/2569")) {
+    const FindHydruHwid = urlValue;
 
-            fetch(
-              `https://stickx.top/api-hydrogen/?hwid=${getHydruId}&api_key=${API_Key}`,
-              options
-            )
-              .then((response) => response.json())
-              .then((response) => {
-                console.log(response)
-              window.location.href === `https://anrehub235.github.io/output.html?value=${response.key}`
-              })
-              .catch((err) => console.error(err));
-          }
-          if (!FindHydruHwid.includes("?id")) {
-          }
-        }
-        if (urlValue.includes("https://spdmteam.com/key-system-1")) {
-          const FindSpdmHwid = urlValue;
+    if (FindHydruHwid.includes("?id")) {
+      var getHydruId = FindHydruHwid.split("?id")[1].split("&")[0];
 
-          if (FindSpdmHwid.includes("?hwid")) {
-            var getSpdmHwid = FindSpdmHwid.split("?")[1].split("&")[0];
-            const options = {
-              method: "get",
-              headers: {
-                Cookie: "__cap_=b3ab392bb9524a0ace949c13933d3a97; __cap_p_=0,0",
-                "Cache-Control": "no-cache",
-                Accept: "*/*",
-                "User-Agent": "Fetch Client",
-                "Accept-Encoding": "gzip, deflate",
-                Connection: "keep-alive",
-              },
-            };
+      const options = {
+        method: "get",
+        headers: {
+          Cookie: "__cap_=b3ab392bb9524a0ace949c13933d3a97; __cap_p_=0,0",
+          "Cache-Control": "no-cache",
+          Accept: "*/*",
+          "User-Agent": "Fetch Client",
+          "Accept-Encoding": "gzip, deflate",
+          Connection: "keep-alive",
+        },
+      };
 
-            fetch(
-              `https://stickx.top/api-arceusx/?hwid=${getSpdmHwid}&api_key=${API_Key}`,
-              options
-            )
-              .then((response) => response.json())
-              .then((response) => {
-                console.log(response)
-              window.location.href === `https://anrehub235.github.io/output.html?value=${response.key}`
-              })
-              .catch((err) => console.error(err));
-          }
-          if (!FindSpdmHwid.includes("?hwid")) {
-            
-          }
-      
-        if (urlValue.includes("https://mobile.codex.lol")) {
-          const FindCodexToken = urlValue;
+      fetch(
+        `https://stickx.top/api-hydrogen/?hwid=${getHydruId}&api_key=${API_Key}`,
+        options
+      )
+        .then((response) => response.json())
+        .then((response) => {
+          console.log(response);
+          window.location.href = `https://anrehub235.github.io/output.html?value=${response.key}`;
+        })
+        .catch((err) => console.error(err));
+    }
+  }
 
-          if (FindCodexToken.includes("?hwid")) {
-            var getCodexToken = FindCodexToken.split("?token")[1].split("&")[0];
-            // Source Code
-            const options = {
-              method: "get",
-              headers: {
-                Cookie: "__cap_=b3ab392bb9524a0ace949c13933d3a97; __cap_p_=0,0",
-                "Cache-Control": "no-cache",
-                Accept: "*/*",
-                "User-Agent": "Fetch Client",
-                "Accept-Encoding": "gzip, deflate",
-                Connection: "keep-alive",
-              },
-            };
+  if (urlValue.includes("https://spdmteam.com/key-system-1")) {
+    const FindSpdmHwid = urlValue;
 
-            fetch(
-              `https://stickx.top/api-codex/?token=${getCodexToken}&api_key=${API_Key}`,
-              options
-            )
-              .then((response) => response.json())
-              .then((response) => {
-                console.log(response)
-              window.location.href === `https://anrehub235.github.io/output.html?value=${response.key}`
-              })
-              .catch((err) => console.error(err));
-          }
-          if (!FindCodexToken.includes("?hwid")) {
-          }
-        }
-        if (urlValue.includes("https://trigonevo.com/getkey/")) {
-          const FindTrigonHwid = urlValue;
+    if (FindSpdmHwid.includes("?hwid")) {
+      var getSpdmHwid = FindSpdmHwid.split("?")[1].split("&")[0];
 
-          if (FindTrigonHwid.includes("&hwid")) {
-            var getTrigonHwid = FindTrigonHwid.split("?hwid")[1].split("&")[0];
-            // Source Code
-            const options = {
-              method: "get",
-              headers: {
-                Cookie: "__cap_=b3ab392bb9524a0ace949c13933d3a97; __cap_p_=0,0",
-                "Cache-Control": "no-cache",
-                Accept: "*/*",
-                "User-Agent": "Fetch Client",
-                "Accept-Encoding": "gzip, deflate",
-                Connection: "keep-alive",
-              },
-            };
+      const options = {
+        method: "get",
+        headers: {
+          Cookie: "__cap_=b3ab392bb9524a0ace949c13933d3a97; __cap_p_=0,0",
+          "Cache-Control": "no-cache",
+          Accept: "*/*",
+          "User-Agent": "Fetch Client",
+          "Accept-Encoding": "gzip, deflate",
+          Connection: "keep-alive",
+        },
+      };
 
-            fetch(
-              `https://stickx.top/api-trigon/?hwid=${getTrigonHwid}&api_key=${API_Key}`,
-              options
-            )
-              .then((response) => response.json())
-              .then((response) => {
-                console.log(response)
-              window.location.href === `https://anrehub235.github.io/output.html?value=${response.key}`
-              })
-              .catch((err) => console.error(err));
-          }
-          if (!FindTrigonHwid.includes("&hwid")) {
-          }
-        }
-        if (urlValue.includes("https://pandadevelopment.net/getkey?service=vegax")) {
-          const FindVegaxHwid = urlValue;
+      fetch(
+        `https://stickx.top/api-arceusx/?hwid=${getSpdmHwid}&api_key=${API_Key}`,
+        options
+      )
+        .then((response) => response.json())
+        .then((response) => {
+          console.log(response);
+          window.location.href = `https://anrehub235.github.io/output.html?value=${response.key}`;
+        })
+        .catch((err) => console.error(err));
+    }
+  }
 
-          if (FindVegaxHwid.includes("&hwid")) {
-            var getHwidVegax = FindVegaxHwid.split("?")[1].split("&hwid")[0];
-            const options = {
-              method: "get",
-              headers: {
-                Cookie: "__cap_=b3ab392bb9524a0ace949c13933d3a97; __cap_p_=0,0",
-                "Cache-Control": "no-cache",
-                Accept: "*/*",
-                "User-Agent": "Fetch Client",
-                "Accept-Encoding": "gzip, deflate",
-                Connection: "keep-alive",
-              },
-            };
+  if (urlValue.includes("https://mobile.codex.lol")) {
+    const FindCodexToken = urlValue;
 
-            fetch(
-              `https://stickx.top/api-vegax/?hwid=${getHwidVegax}&api_key=${API_Key}`,
-              options
-            )
-              .then((response) => response.json())
-              .then((response) => {
-                console.log(response)
-              window.location.href === `https://anrehub235.github.io/output.html?value=${response.key}`
-              })
-              .catch((err) => console.error(err));
-          }
-          if (!FindVegaxHwid.includes("&hwid")) {
-          }
-        }
+    if (FindCodexToken.includes("?token")) {
+      var getCodexToken = FindCodexToken.split("?token")[1].split("&")[0];
 
+      const options = {
+        method: "get",
+        headers: {
+          Cookie: "__cap_=b3ab392bb9524a0ace949c13933d3a97; __cap_p_=0,0",
+          "Cache-Control": "no-cache",
+          Accept: "*/*",
+          "User-Agent": "Fetch Client",
+          "Accept-Encoding": "gzip, deflate",
+          Connection: "keep-alive",
+        },
+      };
+
+      fetch(
+        `https://stickx.top/api-codex/?token=${getCodexToken}&api_key=${API_Key}`,
+        options
+      )
+        .then((response) => response.json())
+        .then((response) => {
+          console.log(response);
+          window.location.href = `https://anrehub235.github.io/output.html?value=${response.key}`;
+        })
+        .catch((err) => console.error(err));
+    }
+  }
+
+  if (urlValue.includes("https://trigonevo.com/getkey/")) {
+    const FindTrigonHwid = urlValue;
+
+    if (FindTrigonHwid.includes("&hwid")) {
+      var getTrigonHwid = FindTrigonHwid.split("?hwid")[1].split("&")[0];
+
+      const options = {
+        method: "get",
+        headers: {
+          Cookie: "__cap_=b3ab392bb9524a0ace949c13933d3a97; __cap_p_=0,0",
+          "Cache-Control": "no-cache",
+          Accept: "*/*",
+          "User-Agent": "Fetch Client",
+          "Accept-Encoding": "gzip, deflate",
+          Connection: "keep-alive",
+        },
+      };
+
+      fetch(
+        `https://stickx.top/api-trigon/?hwid=${getTrigonHwid}&api_key=${API_Key}`,
+        options
+      )
+        .then((response) => response.json())
+        .then((response) => {
+          console.log(response);
+          window.location.href = `https://anrehub235.github.io/output.html?value=${response.key}`;
+        })
+        .catch((err) => console.error(err));
+    }
+  }
+
+  if (urlValue.includes("https://pandadevelopment.net/getkey?service=vegax")) {
+    const FindVegaxHwid = urlValue;
+
+    if (FindVegaxHwid.includes("&hwid")) {
+      var getHwidVegax = FindVegaxHwid.split("?")[1].split("&hwid")[0];
+
+      const options = {
+        method: "get",
+        headers: {
+          Cookie: "__cap_=b3ab392bb9524a0ace949c13933d3a97; __cap_p_=0,0",
+          "Cache-Control": "no-cache",
+          Accept: "*/*",
+          "User-Agent": "Fetch Client",
+          "Accept-Encoding": "gzip, deflate",
+          Connection: "keep-alive",
+        },
         if (
           urlValue.includes("https://hohohubv-ac90f67762c4.herokuapp.com/api/getkeyv2")
         ) {
