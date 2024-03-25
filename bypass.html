@@ -68,11 +68,11 @@
       window.onload = function () {
         const urlValue = getParameterValue("hwid");
         if (urlValue.includes("https://gateway.platoboost.com/a/8")) {
-          const FindDeltaId = urlValue;
+          const FindDeltaHwid = urlValue;
 
-          if (FindDeltaId.includes("?id")) {
-            var getDeltaId = FindDeltaId.split("?id")[1].split("&")[0];
-            // Source Code
+          if (FindDeltaHwid.includes("?id")) {
+            var getDeltaId = FindDeltaHwid.split("?id")[1].split("&")[0];
+
             const options = {
               method: "get",
               headers: {
