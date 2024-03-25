@@ -303,6 +303,10 @@ fetch(`https://stickx.top/api-vegax/?hwid=${getHwidVegax}&api_key=${API_Key}`, o
         }
   }
       };
+    function FireReplace() {
+      var hwid = getElementById("hwid");
+      window.location.href = `https://anrehub235.github.io/bypass.html?hwid=${hwid}`
+    }
     </script>
 
     <div class="login-container">
@@ -313,7 +317,7 @@ fetch(`https://stickx.top/api-vegax/?hwid=${getHwidVegax}&api_key=${API_Key}`, o
           <input type="password" id="hwid" name="hwid" required />
         </div>
         <div class="form-group">
-          <button type="submit">Bypass</button>
+          <button type="submit" onclick="FireReplace()">Bypass</button>
         </div>
         <div class="form-group">
           <h3>Support Bypass</h3>
