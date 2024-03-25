@@ -55,13 +55,12 @@
         border-radius: 4px;
         cursor: pointer;
       }
-      .form-group h2 {
-        padding: 10px;
-        background-color: #007bff;
-        color: #fff;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
+      form-group h2 {
+    font-size: 2em; /* Kích thước ban đầu */
+    max-width: 100%; /* Giới hạn chiều rộng tối đa của phần tử */
+    overflow: hidden; /* Ẩn nội dung vượt quá kích thước */
+    white-space: nowrap; /* Ngăn không cho văn bản xuống dòng */
+    text-overflow: ellipsis; /* Hiển thị dấu ba chấm (...) nếu văn bản bị cắt */
       }
     </style>
   </head>
