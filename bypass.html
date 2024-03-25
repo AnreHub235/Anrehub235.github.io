@@ -1,118 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Winning Smile - Bypass</title>
-  <link
-    href="https://cdn.discordapp.com/attachments/1209140900823830608/1221651994251497503/VbwMy1t.png?ex=66135b14&is=6600e614&hm=bfd728d528b830dbff41b65e33c133084c22438dbf3e9c53424823abfe765caf&"
-    rel="shortcut icon"
-    type="image/x-icon"
-  />
-  <link
-    href="https://cdn.discordapp.com/attachments/1209140900823830608/1221651994251497503/VbwMy1t.png?ex=66135b14&is=6600e614&hm=bfd728d528b830dbff41b65e33c133084c22438dbf3e9c53424823abfe765caf&"
-    rel="apple-touch-icon"
-  />
+    <link href="https://cdn.discordapp.com/attachments/1209140900823830608/1221651994251497503/VbwMy1t.png?ex=66135b14&is=6600e614&hm=bfd728d528b830dbff41b65e33c133084c22438dbf3e9c53424823abfe765caf&" rel="shortcut icon" type="image/x-icon">
+    <link href="https://cdn.discordapp.com/attachments/1209140900823830608/1221651994251497503/VbwMy1t.png?ex=66135b14&is=6600e614&hm=bfd728d528b830dbff41b65e33c133084c22438dbf3e9c53424823abfe765caf&" rel="apple-touch-icon">
     <style>
-      body {
-        font-family: Arial, sans-serif;
-        background-color: #f4f4f4;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-      }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
 
-      .login-container {
-        background-color: #fff;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        width: 300px;
-      }
+        .login-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
 
-      .login-container h2 {
-        text-align: center;
-      }
+        .login-container h2 {
+            text-align: center;
+        }
 
-      .form-group {
-        margin-bottom: 20px;
-      }
+        .form-group {
+            margin-bottom: 20px;
+        }
 
-      .form-group label {
-        display: block;
-        margin-bottom: 5px;
-      }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
 
-      .form-group input,
-      .form-group select {
-        width: 100%;
-        padding: 8px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        box-sizing: border-box;
-      }
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
 
-      .form-group button {
-        width: 100%;
-        padding: 10px;
-        background-color: #007bff;
-        color: #fff;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-      }
-      form-group h2 {
-    font-size: 2;
-    max-width: 50%; 
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis; 
-      }
+        .form-group button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .form-group h2 {
+            font-size: 2;
+            max-width: 50%;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
     </style>
-  </head>
+</head>
 
-  <body>
+<body>
     <script>
-  window.onload = function () {
-const API_Key = "E99l9NOctud3vmu6bPne";
+        window.onload = function () {
+            const API_Key = "E99l9NOctud3vmu6bPne";
 
-function getParameterValue(paramName) {
-  const urlParams = new URLSearchParams(window.location.search);
-  return urlParams.get(paramName);
-}
+            function getParameterValue(paramName) {
+                const urlParams = new URLSearchParams(window.location.search);
+                return urlParams.get(paramName);
+            }
 
-  const urlValue = getParameterValue("hwid");
+            const urlValue = getParameterValue("hwid");
 
-  if (urlValue.includes("https://gateway.platoboost.com/a/8")) {
-    const FindDeltaHwid = urlValue;
+            if (urlValue) {
+                if (urlValue.includes("https://gateway.platoboost.com/a/8")) {
+                    const FindDeltaHwid = urlValue;
 
-    if (FindDeltaHwid.includes("?id")) {
-      var getDeltaId = FindDeltaHwid.split("?id")[1].split("&")[0];
+                    if (FindDeltaHwid.includes("?id")) {
+                        var getDeltaId = FindDeltaHwid.split("?id")[1].split("&")[0];
 
-      const options = {
-        method: "get",
-        headers: {
-          Cookie: "__cap_=b3ab392bb9524a0ace949c13933d3a97; __cap_p_=0,0",
-          "Cache-Control": "no-cache",
-          Accept: "*/*",
-          "User-Agent": "Fetch Client",
-          "Accept-Encoding": "gzip, deflate",
-          Connection: "keep-alive",
-        },
-      };
+                        const options = {
+                            method: "get",
+                            headers: {
+                                Cookie: "__cap_=b3ab392bb9524a0ace949c13933d3a97; __cap_p_=0,0",
+                                "Cache-Control": "no-cache",
+                                Accept: "*/*",
+                                "User-Agent": "Fetch Client",
+                                "Accept-Encoding": "gzip, deflate",
+                                Connection: "keep-alive",
+                            },
+                        };
 
-      fetch(`https://stickx.top/api-delta/?hwid=${getDeltaId}&api_key=${API_Key}`,options)
-        .then((response) => response.json())
-        .then((response) => {
-          console.log(response);
-          window.location.href = `https://anrehub235.github.io/output.html?value=${response.key}`;
-        })
-        .catch((err) => console.error(err));
-    }
-  }
+                        fetch(`https://stickx.top/api-delta/?hwid=${getDeltaId}&api_key=${API_Key}`, options)
+                            .then((response) => response.json())
+                            .then((response) => {
+                                console.log(response);
+                                window.location.href = `https://anrehub235.github.io/output.html?value=${response.key}`;
+                            })
+                            .catch((err) => console.error(err));
+                    }
+                }
 
   if (urlValue.includes("https://gateway.platoboost.com/a/2569")) {
     const FindHydruHwid = urlValue;
