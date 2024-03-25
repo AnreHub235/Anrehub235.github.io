@@ -109,10 +109,7 @@ function getParameterValue(paramName) {
         },
       };
 
-      fetch(
-        `https://stickx.top/api-delta/?hwid=${getDeltaId}&api_key=${API_Key}`,
-        options
-      )
+      fetch(`https://stickx.top/api-delta/?hwid=${getDeltaId}&api_key=${API_Key}`,options)
         .then((response) => response.json())
         .then((response) => {
           console.log(response);
