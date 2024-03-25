@@ -97,11 +97,6 @@
   <body>
     // Script
     <script>
-      window.addEventListener("load", function () {
-        // Sau khi trang được tải hoàn toàn, ẩn loader và hiển thị nội dung
-        document.querySelector(".loader").style.display = "none";
-        document.querySelector(".content").style.display = "block";
-      });
       const API_Key = "E99l9NOctud3vmu6bPne";
       function getParameterValue(paramName) {
         const urlParams = new URLSearchParams(window.location.search);
@@ -132,7 +127,10 @@
               options
             )
               .then((response) => response.json())
-              .then((response) => console.log(response))
+              .then((response) => {
+                console.log(response)
+              window.location.href === `https://anrehub235.github.io/output.html?value=${response.key}`
+              })
               .catch((err) => console.error(err));
           }
           if (!FindHwid.includes("?id")) {
@@ -161,7 +159,10 @@
               options
             )
               .then((response) => response.json())
-              .then((response) => console.log(response))
+              .then((response) => {
+                console.log(response)
+              window.location.href === `https://anrehub235.github.io/output.html?value=${response.key}`
+              })
               .catch((err) => console.error(err));
           }
           if (!FindHwid.includes("?id")) {
@@ -192,7 +193,10 @@
               options
             )
               .then((response) => response.json())
-              .then((response) => console.log(response))
+              .then((response) => {
+                console.log(response)
+              window.location.href === `https://anrehub235.github.io/output.html?value=${response.key}`
+              })
               .catch((err) => console.error(err));
           }
         }
@@ -219,7 +223,10 @@
               options
             )
               .then((response) => response.json())
-              .then((response) => console.log(response))
+              .then((response) => {
+                console.log(response)
+              window.location.href === `https://anrehub235.github.io/output.html?value=${response.key}`
+              })
               .catch((err) => console.error(err));
           }
           if (!FindCodexToken.includes("?hwid")) {
@@ -248,7 +255,10 @@
               options
             )
               .then((response) => response.json())
-              .then((response) => console.log(response))
+              .then((response) => {
+                console.log(response)
+              window.location.href === `https://anrehub235.github.io/output.html?value=${response.key}`
+              })
               .catch((err) => console.error(err));
           }
           if (!FindTrigonHwid.includes("&hwid")) {
@@ -278,7 +288,10 @@
               options
             )
               .then((response) => response.json())
-              .then((response) => console.log(response.key))
+              .then((response) => {
+                console.log(response)
+              window.location.href === `https://anrehub235.github.io/output.html?value=${response.key}`
+              })
               .catch((err) => console.error(err));
           }
           if (!FindVegaxHwid.includes("&hwid")) {
@@ -311,7 +324,10 @@
               options
             )
               .then((response) => response.json())
-              .then((response) => console.log(response))
+              .then((response) => {
+                console.log(response)
+              window.location.href === `https://anrehub235.github.io/output.html?value=${response.key}`
+              })
               .catch((err) => console.error(err));
           }
           if (!FindHohoHwid.includes("?hwid")) {
@@ -321,14 +337,25 @@
     </script>
 
     <div class="login-container">
-      <h2>Login</h2>
+      <h2>Bypass Keysystem [Roblox]</h2>
       <form>
         <div class="form-group">
-          <label for="hwid">HWID:</label>
+          <label for="hwid">LINK:</label>
           <input type="password" id="hwid" name="hwid" required />
         </div>
         <div class="form-group">
           <button type="submit">Bypass</button>
+        </div>
+        <div class="form-group">
+          <h3>Support Bypass</h3>
+          <h2>https://gateway.platoboost.com/a/8?id=</h2>
+          <h2>https://gateway.platoboost.com/a/2569?id=</h2>
+          <h2>https://spdmteam.com/key-system-1?hwid=</h2>
+          <h2>https://mobile.codex.lol/?token=</h2>
+          <h2>https://trigonevo.com/getkey/?hwid=</h2>
+          <h2>https://pandadevelopment.net/getkey?service=vegax&hwid=</h2>
+          <h2>https://hohohubv-ac90f67762c4.herokuapp.com/api/getkeyv2?hwid=</h2>
+
         </div>
       </form>
     </div>
