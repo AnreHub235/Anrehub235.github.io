@@ -157,7 +157,7 @@ function getParameterValue(paramName) {
     const FindSpdmHwid = urlValue;
 
     if (FindSpdmHwid.includes("?hwid")) {
-      var getSpdmHwid = FindSpdmHwid.split("?")[1].split("&")[0];
+      var getSpdmHwid = FindSpdmHwid.split("?hwid")[1].split("&zone")[0];
 
       const options = {
         method: "get",
