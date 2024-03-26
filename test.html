@@ -3,136 +3,60 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bypass Website</title>
+<title>Bypass City</title>
 <style>
-  body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f8f9fa;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  .main-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 80%;
-  }
-  .container {
-    width: 100%;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-    position: relative;
-  }
-  h1 {
-    color: #333;
-    text-align: center;
-  }
-  .form-group {
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-  }
-  .form-group label {
-    font-weight: bold;
-    margin-right: 10px;
-  }
-  .form-group input[type="text"] {
-    width: calc(50% - 85px);
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  .form-group button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  .form-group button:hover {
-    background-color: #0056b3;
-  }
-  .info {
-    padding: 10px;
-    background-color: #f0f0f0;
-    border-radius: 5px;
-  }
-  .dropdown {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    overflow: hidden;
-    transition: max-height 0.3s ease;
-    max-height: 0;
-  }
-  .dropdown.active {
-    max-height: 200px;
-  }
-  .dropdown-item {
-    padding: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  .dropdown-item:hover {
-    background-color: #ddd;
-  }
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+    }
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    .header {
+        background-color: #333;
+        color: #fff;
+        padding: 10px;
+        text-align: center;
+    }
+    .main-content {
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 20px;
+        margin-top: 20px;
+    }
+    .button {
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+    .button:hover {
+        background-color: #45a049;
+    }
 </style>
 </head>
 <body>
-
-<div class="main-content">
-  <div class="container">
-    <h1>Bypass Website</h1>
-    <div class="form-group">
-      <label for="url">Url </label>
-      <div class="dropdown">
-        <div class="dropdown-item" onclick="selectOption('URL')">URL</div>
-        <div class="dropdown-item" onclick="selectOption('Dev')">Dev</div>
-      </div>
-      <input type="text" id="url" placeholder="Enter your link">
-      <button id="bypassButton">Bypass</button>
+    <div class="container">
+        <div class="header">
+            <h1>Bypass City</h1>
+        </div>
+        <div class="main-content">
+            <p>Welcome to Bypass City, where you can bypass any restriction!</p>
+            <p>Click the button below to bypass:</p>
+            <button class="button">Bypass Now</button>
+        </div>
     </div>
-  </div>
-
-  <div class="container">
-    <div class="info">
-      <p>Owner: Moroxi</p>
-      <p>Bypass API: Conel</p>
-      <p>More ..... </p>
-    </div>
-  </div>
-</div>
-
-<script>
-  function selectOption(option) {
-    document.getElementById("url").placeholder = "Enter your " + option.toLowerCase();
-    document.querySelector('.dropdown').classList.remove('active');
-  }
-
-  document.getElementById("url").addEventListener("click", function() {
-    document.querySelector('.dropdown').classList.toggle('active');
-  });
-
-  document.getElementById("bypassButton").addEventListener("click", function() {
-    var url = document.getElementById("url").value;
-    // Add your bypass logic here
-    alert("Bypassing URL: " + url);
-  });
-</script>
-
 </body>
 </html>
