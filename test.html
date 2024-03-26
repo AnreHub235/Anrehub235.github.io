@@ -3,60 +3,150 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bypass City</title>
+<title>Bypass Website</title>
 <style>
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #f0f0f0;
-        margin: 0;
-        padding: 0;
-    }
-    .container {
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 20px;
-    }
-    .header {
-        background-color: #333;
-        color: #fff;
-        padding: 10px;
-        text-align: center;
-    }
-    .main-content {
-        background-color: #fff;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        padding: 20px;
-        margin-top: 20px;
-    }
-    .button {
-        background-color: #4CAF50;
-        border: none;
-        color: white;
-        padding: 15px 32px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-        margin: 4px 2px;
-        cursor: pointer;
-        border-radius: 5px;
-    }
-    .button:hover {
-        background-color: #45a049;
-    }
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #333; /* Màu nền đậm */
+    color: #fff; /* Màu chữ trắng */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  .main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+  }
+  .container {
+    width: 100%;
+    padding: 20px;
+    background-color: #444; /* Màu nền của container */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Đổ bóng container */
+    margin-bottom: 20px;
+    position: relative;
+    text-align: center; /* Canh giữa nội dung trong container */
+  }
+  h1 {
+    color: #fff;
+    text-align: center;
+  }
+  .form-group {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Canh giữa các thành phần trong form theo chiều ngang */
+    flex-wrap: wrap; /* Cho phép các thành phần trong form xuống dòng nếu không đủ không gian */
+  }
+  .form-group label {
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  .form-group input[type="text"] {
+    width: calc(50% - 85px); /* Độ rộng của text box */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px; /* Khoảng cách giữa textbox và dropdown */
+  }
+  .form-group .dropdown {
+    width: calc(50% - 85px); /* Độ rộng của dropdown */
+    position: relative;
+  }
+  .form-group .dropdown-content {
+    position: absolute;
+    width: 100%;
+    top: 100%;
+    left: 0;
+    background-color: #777; /* Màu nền dropdown */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    max-height: 0;
+  }
+  .form-group .dropdown.active .dropdown-content {
+    max-height: 200px;
+  }
+  .form-group .dropdown-item {
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .form-group .dropdown-item:hover {
+    background-color: #999; /* Màu nền hover của dropdown */
+  }
+  .form-group button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .form-group button:hover {
+    background-color: #0056b3;
+  }
+  .info {
+    padding: 10px;
+    background-color: #666; /* Màu nền của thông tin */
+    border-radius: 5px;
+    text-align: center; /* Canh giữa nội dung trong thông tin */
+  }
 </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>Bypass City</h1>
+
+<div class="main-content">
+  <div class="container">
+    <h1>Bypass Website</h1>
+    <div class="form-group">
+      <label for="url">Url</label>
+      <input type="text" id="url" placeholder="Enter your link">
+      <div class="dropdown">
+        <button onclick="toggleDropdown()">Select Option</button>
+        <div class="dropdown-content" id="dropdownContent">
+          <div class="dropdown-item" onclick="selectOption('Dev')">Dev</div>
+          <div class="dropdown-item" onclick="selectOption('URL')">URL</div>
         </div>
-        <div class="main-content">
-            <p>Welcome to Bypass City, where you can bypass any restriction!</p>
-            <p>Click the button below to bypass:</p>
-            <button class="button">Bypass Now</button>
-        </div>
+      </div>
+      <button id="bypassButton">Bypass</button>
     </div>
+  </div>
+
+  <div class="container">
+    <div class="info">
+      <p>Owner: Moroxi</p>
+      <p>Bypass API: Conel</p>
+      <p>More ..... </p>
+    </div>
+  </div>
+</div>
+
+<script>
+  function toggleDropdown() {
+    var dropdownContent = document.getElementById("dropdownContent");
+    dropdownContent.classList.toggle("active");
+  }
+
+  function selectOption(option) {
+    document.getElementById("url").placeholder = "Enter your " + option.toLowerCase();
+    toggleDropdown();
+  }
+
+  document.getElementById("bypassButton").addEventListener("click", function() {
+    var url = document.getElementById("url").value;
+    // Add your bypass logic here
+    alert("Bypassing URL: " + url);
+  });
+</script>
+
 </body>
 </html>
