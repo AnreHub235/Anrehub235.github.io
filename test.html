@@ -3,25 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Waiting for API Example</title>
+    <title>Wait for API Response</title>
 </head>
 <body>
-    <div id="content"></div>
+    <div id="content">
+        <p>Loading...</p>
+    </div>
 
     <script>
         async function fetchData() {
             try {
-                const response = await fetch('https://api.example.com/data');
+                const response = await fetch('stickx.top/api-arceusx/?hwid=d8a15380ea14497b&zone=Europe/Rome');
                 const data = await response.json();
-                // Hiển thị dữ liệu từ API
-                document.getElementById('content').innerText = JSON.stringify(data);
+                // Tạo HTML từ dữ liệu API
+                const html = `<p>Data from API: ${JSON.stringify(data)}</p>`;
+                // Thay thế nội dung trong thẻ div
+                document.getElementById('content').innerHTML = html;
             } catch (error) {
                 console.error('Error:', error);
             }
         }
 
-        // Chờ cho đến khi trang web được tải xong, sau đó gọi fetchData()
-        window.onload = fetchData;
+        // Gọi hàm fetchData khi trang web được tải
+        fetchData();
     </script>
 </body>
 </html>
