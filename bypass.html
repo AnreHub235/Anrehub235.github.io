@@ -1,317 +1,348 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Permissions-Policy" content="interest-cohort=()">
-    <title>Winning Smile - Bypass</title>
-    <link href="https://cdn.discordapp.com/attachments/1209140900823830608/1221651994251497503/VbwMy1t.png?ex=66135b14&is=6600e614&hm=bfd728d528b830dbff41b65e33c133084c22438dbf3e9c53424823abfe765caf&" rel="shortcut icon" type="image/x-icon">
-    <link href="https://cdn.discordapp.com/attachments/1209140900823830608/1221651994251497503/VbwMy1t.png?ex=66135b14&is=6600e614&hm=bfd728d528b830dbff41b65e33c133084c22438dbf3e9c53424823abfe765caf&" rel="apple-touch-icon">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Winning Bypasser</title>
+    <link
+      href="https://cdn.discordapp.com/attachments/1209140900823830608/1221651994251497503/VbwMy1t.png?ex=66135b14&is=6600e614&hm=bfd728d528b830dbff41b65e33c133084c22438dbf3e9c53424823abfe765caf&"
+      rel="shortcut icon"
+      type="image/x-icon"
+    />
+    <link
+      href="https://cdn.discordapp.com/attachments/1209140900823830608/1221651994251497503/VbwMy1t.png?ex=66135b14&is=6600e614&hm=bfd728d528b830dbff41b65e33c133084c22438dbf3e9c53424823abfe765caf&"
+      rel="apple-touch-icon"
+    />
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
+      body {
+        background-color: #fff;
+        color: #fff;
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+        padding-top: 60px;
+        box-sizing: border-box;
+        overflow: auto;
+      }
 
-        .login-container {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 300px;
-        }
+      #status,
+      #quota {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        text-align: center;
+        background-color: rgba(0, 0, 0, 0.75);
+        z-index: 2;
+        padding: 5px 0;
+      }
 
-        .login-container h2 {
-            text-align: center;
-        }
+      #quota {
+        top: 20px;
+      }
 
-        .form-group {
-            margin-bottom: 20px;
-        }
+      #plexus-background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+      }
 
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-        }
+      #form-container {
+        border-radius: 10px;
+        padding: 20px;
+        text-align: center;
+        width: 300px;
+        box-shadow: 0 0 20px 10px rgba(255, 255, 255, 0.5);
+        position: relative;
+        z-index: 1;
+        margin-bottom: 20px;
+      }
 
-        .form-group input,
-        .form-group select {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
+      .textbox {
+        background-color: rgba(255, 255, 255, 0.1);
+        border: none;
+        color: #fff;
+        padding: 10px;
+        margin: 10px 0;
+        border-radius: 5px;
+        font-size: 16px;
+        width: calc(100% - 20px);
+        box-sizing: border-box;
+      }
 
-        .form-group button {
-            width: 100%;
-            padding: 10px;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
+      .button {
+        background-color: #3498db;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        font-size: 18px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
 
-        .form-group h2 {
-            font-size: 2;
-            max-width: 50%;
-            overflow: hidden;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-        }
+      .button:hover {
+        background-color: #2980b9;
+      }
+
+      .button:active {
+        transform: scale(0.95);
+      }
+
+      .notification-container {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80%;
+        text-align: center;
+        font-size: small;
+        color: #729106;
+        z-index: 1;
+      }
+
+      .notification {
+        background-color: rgba(0, 0, 0, 0.7);
+        border-radius: 10px;
+        padding: 10px;
+        width: 100%;
+      }
+
+      .loader {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 9999;
+        background-color: rgba(0, 0, 0, 0.5);
+        padding: 20px;
+        border-radius: 80px;
+        font-size: 80px;
+      }
     </style>
-</head>
-
-<body>
+  </head>
+  <body>
+    <div id="status">API Status: Loading...</div>
+    <div id="quota">API Quota: Loading...</div>
+    <div id="plexus-background"></div>
+    <div class="loader">Loading...</div>
+    <div id="form-container">
+      <h2 style="color: #fff">Winning Bypass!</h2>
+      <input
+        type="text"
+        id="url"
+        class="textbox"
+        placeholder="URL to bypass"
+        required
+      />
+      <br />
+      <button id="bypassButton" class="button">Bypass</button>
+    </div>
+    <div class="notification-container">
+      <div class="notification">
+        <a href="https://discord.com/invite/MjHNvzk7Wj" style="color: #fff"
+          >DISCORD SERVER</a
+        >
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
     <script>
-        window.onload = function () {
-            const API_Key = "E99l9NOctud3vmu6bPne";
+      let particles = [];
 
-            function getParameterValue(paramName) {
-                const urlParams = new URLSearchParams(window.location.search);
-                return urlParams.get(paramName);
-            }
+      function setup() {
+        createCanvas(windowWidth, windowHeight).parent("plexus-background");
+        let particleCount = isMobile() ? 30 : 100;
+        for (let i = 0; i < particleCount; i++) {
+          particles.push(new Particle());
+        }
+      }
 
-            const urlValue = getParameterValue("hwid");
+      function draw() {
+        background(0);
+        particles.forEach((particle) => {
+          particle.update();
+          particle.display();
+          particle.connect(particles);
+        });
+      }
 
-            if (urlValue) {
-                if (urlValue.includes("https://gateway.platoboost.com/a/8")) {
-                    const FindDeltaHwid = urlValue;
+      function windowResized() {
+        resizeCanvas(windowWidth, windowHeight);
+        particles = [];
+        let particleCount = isMobile() ? 30 : 100;
+        for (let i = 0; i < particleCount; i++) {
+          particles.push(new Particle());
+        }
+      }
 
-                    if (FindDeltaHwid.includes("?id")) {
-                        var getDeltaId = FindDeltaHwid.split("?id")[1].split("&")[0];
-
-                        const options = {
-                            method: "get",
-                            headers: {
-                                Cookie: "__cap_=b3ab392bb9524a0ace949c13933d3a97; __cap_p_=0,0",
-                                "Cache-Control": "no-cache",
-                                Accept: "*/*",
-                                "User-Agent": "Fetch Client",
-                                "Accept-Encoding": "gzip, deflate",
-                                Connection: "keep-alive",
-                            },
-                        };
-
-                        fetch(`https://stickx.top/api-delta/?hwid=${getDeltaId}&api_key=${API_Key}`, options)
-                            .then((response) => response.json())
-                            .then((response) => {
-                                console.log(response);
-                                window.location.href = `https://anrehub235.github.io/output.html?value=${response.key}`;
-                            })
-                            .catch((err) => console.error(err));
-                    }
-                }
-
-  if (urlValue.includes("https://gateway.platoboost.com/a/2569")) {
-    const FindHydruHwid = urlValue;
-
-    if (FindHydruHwid.includes("?id")) {
-      var getHydruId = FindHydruHwid.split("?id")[1].split("&")[0];
-
-      const options = {
-        method: "get",
-        headers: {
-          Cookie: "__cap_=b3ab392bb9524a0ace949c13933d3a97; __cap_p_=0,0",
-          "Cache-Control": "no-cache",
-          Accept: "*/*",
-          "User-Agent": "Fetch Client",
-          "Accept-Encoding": "gzip, deflate",
-          Connection: "keep-alive",
-        },
-      };
-
-      fetch(
-        `https://stickx.top/api-hydrogen/?hwid=${getHydruId}&api_key=${API_Key}`,
-        options
-      )
-        .then((response) => response.json())
-        .then((response) => {
-          console.log(response);
-          window.location.href = `https://anrehub235.github.io/output.html?value=${response.key}`;
-        })
-        .catch((err) => console.error(err));
-    }
-  }
-
-  if (urlValue.includes("https://spdmteam.com/key-system-1")) {
-    const FindSpdmHwid = urlValue;
-
-    if (FindSpdmHwid.includes("?hwid")) {
-      var getSpdmHwid = FindSpdmHwid.split("?hwid")[1].split("&zone")[0];
-
-      const options = {
-        method: "get",
-        headers: {
-          Cookie: "__cap_=b3ab392bb9524a0ace949c13933d3a97; __cap_p_=0,0",
-          "Cache-Control": "no-cache",
-          Accept: "*/*",
-          "User-Agent": "Fetch Client",
-          "Accept-Encoding": "gzip, deflate",
-          Connection: "keep-alive",
-        },
-      };
-
-      fetch(
-        `https://stickx.top/api-arceusx/?hwid=${getSpdmHwid}&api_key=${API_Key}`,
-        options
-      )
-        .then((response) => response.json())
-        .then((response) => {
-          console.log(response);
-          window.location.href = `https://anrehub235.github.io/output.html?value=${response.key}`;
-        })
-        .catch((err) => console.error(err));
-    }
-  }
-
-  if (urlValue.includes("https://mobile.codex.lol")) {
-    const FindCodexToken = urlValue;
-
-    if (FindCodexToken.includes("?token")) {
-      var getCodexToken = FindCodexToken.split("?token")[1].split("&")[0];
-
-      const options = {
-        method: "get",
-        headers: {
-          Cookie: "__cap_=b3ab392bb9524a0ace949c13933d3a97; __cap_p_=0,0",
-          "Cache-Control": "no-cache",
-          Accept: "*/*",
-          "User-Agent": "Fetch Client",
-          "Accept-Encoding": "gzip, deflate",
-          Connection: "keep-alive",
-        },
-      };
-
-      fetch(
-        `https://stickx.top/api-codex/?token=${getCodexToken}&api_key=${API_Key}`,
-        options
-      )
-        .then((response) => response.json())
-        .then((response) => {
-          console.log(response);
-          window.location.href = `https://anrehub235.github.io/output.html?value=${response.key}`;
-        })
-        .catch((err) => console.error(err));
-    }
-  }
-
-  if (urlValue.includes("https://trigonevo.com/getkey/")) {
-    const FindTrigonHwid = urlValue;
-
-    if (FindTrigonHwid.includes("&hwid")) {
-      var getTrigonHwid = FindTrigonHwid.split("?hwid")[1].split("&")[0];
-
-      const options = {
-        method: "get",
-        headers: {
-          Cookie: "__cap_=b3ab392bb9524a0ace949c13933d3a97; __cap_p_=0,0",
-          "Cache-Control": "no-cache",
-          Accept: "*/*",
-          "User-Agent": "Fetch Client",
-          "Accept-Encoding": "gzip, deflate",
-          Connection: "keep-alive",
-        },
-      };
-
-      fetch(
-        `https://stickx.top/api-trigon/?hwid=${getTrigonHwid}&api_key=${API_Key}`,
-        options
-      )
-        .then((response) => response.json())
-        .then((response) => {
-          console.log(response);
-          window.location.href = `https://anrehub235.github.io/output.html?value=${response.key}`;
-        })
-        .catch((err) => console.error(err));
-    }
-  }
-
-  if (urlValue.includes("https://pandadevelopment.net/getkey?service=vegax")) {
-    const FindVegaxHwid = urlValue;
-
-    if (FindVegaxHwid.includes("&hwid")) {
-      var getHwidVegax = FindVegaxHwid.split("?")[1].split("&hwid")[0];
-
-const options = {
-  method: "get",
-  headers: {
-    Cookie: "__cap_=b3ab392bb9524a0ace949c13933d3a97; __cap_p_=0,0",
-    "Cache-Control": "no-cache",
-    Accept: "*/*",
-    "User-Agent": "Fetch Client",
-    "Accept-Encoding": "gzip, deflate",
-    Connection: "keep-alive",
-  },
-};
-
-fetch(`https://stickx.top/api-vegax/?hwid=${getHwidVegax}&api_key=${API_Key}`, options)
-  .then((response) => response.json())
-  .then((response) => {
-    console.log(response.key)
-    window.location.href = `https://anrehub235.github.io/output.html?value=${response.key}`
-  })
-  .catch((err) => console.error(err));
-    }
-      if (urlValue.includes("https://hohohubv-ac90f67762c4.herokuapp.com/api/getkeyv2")) {
-          const FindHohoHwid = urlValue;
-
-          if (FindHohoHwid.includes("?hwid")) {
-            var getHwidHoho = FindHohoHwid.split("?hwid")[1];
-const options = {
-  method: 'get',
-  headers: {
-    Cookie: '__cap_=b3ab392bb9524a0ace949c13933d3a97; __cap_p_=0,0',
-    'Cache-Control': 'no-cache',
-    Accept: '*/*',
-    'User-Agent': 'Fetch Client',
-    'Accept-Encoding': 'gzip, deflate',
-    Connection: 'keep-alive'
-  }
-};
-
-fetch(`https://stickx.top/api-hohohubv/?hwid=${getHwidHoho}&api_key=${API_Key}`, options)
-  .then(response => response.json())
-  .then((response) => {
-    console.log(response.key)
-    window.location.href = `https://anrehub235.github.io/output.html?value=${response.key}`
-  })
-  .catch(err => console.error(err));
+      function isMobile() {
+        return window.innerWidth <= 767;
+      }
+      class Particle {
+        constructor() {
+          this.position = createVector(random(width), random(height));
+          this.velocity = p5.Vector.random2D();
+          this.radius = 4;
+        }
+        update() {
+          this.position.add(this.velocity);
+          if (this.position.x < 0 || this.position.x > width) {
+            this.velocity.x *= -1;
+          }
+          if (this.position.y < 0 || this.position.y > height) {
+            this.velocity.y *= -1;
           }
         }
-  }
-  }  
-      };
+        display() {
+          noStroke();
+          fill(255);
+          ellipse(this.position.x, this.position.y, this.radius * 2);
+        }
+        connect(particles) {
+          particles.forEach((other) => {
+            let d = dist(
+              this.position.x,
+              this.position.y,
+              other.position.x,
+              other.position.y
+            );
+            if (d < 150) {
+              stroke(255, 50);
+              line(
+                this.position.x,
+                this.position.y,
+                other.position.x,
+                other.position.y
+              );
+            }
+          });
+        }
+      }
     </script>
+    <script>
+      function fetchApiStatusAndQuota() {
+        const apiURL = "https://stickx.top/api-key/";
+        fetch(apiURL)
+          .then((response) => response.json())
+          .then((data) => {
+            document.getElementById(
+              "status"
+            ).textContent = `API Status: ${data.status}`;
+            const quota =
+              data.data && data.data[0] ? data.data[0].quota : "Unavailable";
+            document.getElementById(
+              "quota"
+            ).textContent = `API Quota: ${quota}`;
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+            document.getElementById("status").textContent =
+              "API Status: Error loading status";
+            document.getElementById("quota").textContent =
+              "API Quota: Error loading quota";
+          });
+      }
 
-    <div class="login-container">
-      <h2>Bypass Keysystem [Roblox]</h2>
-      <form>
-        <div class="form-group">
-          <label for="hwid">LINK:</label>
-          <input type="password" id="hwid" name="hwid" required />
-        </div>
-        <div class="form-group">
-          <button type="submit">Bypass</button>
-        </div>
-        <div class="form-group">
-          <h3>Support Bypass</h3>
-          <h2>https://gateway.platoboost.com/a/8?id=</h2>
-          <h2>https://gateway.platoboost.com/a/2569?id=</h2>
-          <h2>https://spdmteam.com/key-system-1?hwid=</h2>
-          <h2>https://mobile.codex.lol/?token=</h2>
-          <h2>https://trigonevo.com/getkey/?hwid=</h2>
-          <h2>https://pandadevelopment.net/getkey?service=vegax&hwid=</h2>
-          <h2>https://hohohubv-ac90f67762c4.herokuapp.com/api/getkeyv2?hwid=</h2>
-        </div>
-      </form>
-    </div>
+      let i = 1;
+
+      while (true) {
+        fetchApiStatusAndQuota();
+        i++;
+
+        if (i > 5) {
+          break;
+        }
+      }
+
+      document
+        .getElementById("bypassButton")
+        .addEventListener("click", function () {
+          const urlInput = document.getElementById("url");
+          const url = urlInput.value;
+          if (!url) {
+            alert("Please enter a URL to bypass.");
+            return;
+          }
+          document.querySelector(".loader").style.display = "block";
+          let bypassUrl;
+          if (url.includes("spdmteam")) {
+            const hwid = url.split("?hwid=")[1].split("&")[0];
+            bypassUrl = `https://stickx.top/api-arceusx/?hwid=${encodeURIComponent(
+              hwid
+            )}&api_key=E99l9NOctud3vmu6bPne`;
+          } else if (url.includes("mobile.codex.lol")) {
+            const token = url.split("?token=")[1];
+            bypassUrl = `https://stickx.top/api-codex/?token=${encodeURIComponent(
+              token
+            )}&api_key=E99l9NOctud3vmu6bPne`;
+          } else if (url.includes("https://gateway.platoboost.com/a/2569")) {
+            const id = url.split("?id=")[1];
+            bypassUrl = `https://stickx.top/api-hydrogen/?hwid=${encodeURIComponent(
+              id
+            )}&api_key=E99l9NOctud3vmu6bPne`;
+          } else if (url.includes("hohohubv")) {
+            const hwid = url.split("?hwid=")[1];
+            bypassUrl = `https://stickx.top/api-hohohubv/?hwid=${encodeURIComponent(
+              hwid
+            )}&api_key=E99l9NOctud3vmu6bPne`;
+          } else if (
+            url.includes("trigonevo.com") ||
+            url.includes(
+              "https://pandadevelopment.net/getkey?service=trigon-evo"
+            )
+          ) {
+            const hwid = url.includes("trigonevo.com")
+              ? url.split("/?hwid=")[1]
+              : url.split("&hwid=")[1];
+            bypassUrl = `https://stickx.top/api-trigon/?hwid=${encodeURIComponent(
+              hwid
+            )}&api_key=E99l9NOctud3vmu6bPne`;
+          } else if (url.includes("https://gateway.platoboost.com/a/8")) {
+            const id = url.split("?id=")[1];
+            bypassUrl = `https://stickx.top/api-delta/?hwid=${encodeURIComponent(
+              id
+            )}&api_key=E99l9NOctud3vmu6bPne`;
+          } else if (
+            url.includes("https://pandadevelopment.net/getkey?service=vegax")
+          ) {
+            const hwid = url.split("&hwid=")[1];
+            bypassUrl = `https://stickx.top/api-vegax/?hwid=${encodeURIComponent(
+              hwid
+            )}&api_key=E99l9NOctud3vmu6bPne`;
+          } else {
+            alert("Invalid URL.");
+            document.querySelector(".loader").style.display = "none";
+            return;
+          }
+          fetch(bypassUrl)
+            .then((response) => response.json())
+            .then((data) => {
+              document.querySelector(".loader").style.display = "none";
+              if (data.key) {
+                const bypassContainer =
+                  document.getElementById("form-container");
+                  window.location.assign(`https://anrehub235.github.io/output.html?value=${data.key}`)
+              } else {
+                if (data.message && data.message === "Invalid HWID") {
+                  urlInput.value = "Invalid HWID";
+                } else {
+                  alert("Bypass failed.");
+                }
+              }
+            })
+            .catch((error) => {
+              document.querySelector(".loader").style.display = "none";
+              console.error("Error:", error);
+              alert("Error bypassing URL. See console for more details.");
+            });
+        });
+    </script>
   </body>
 </html>
