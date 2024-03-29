@@ -1,1 +1,27 @@
-same
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waiting for API Example</title>
+</head>
+<body>
+    <div id="content"></div>
+
+    <script>
+        async function fetchData() {
+            try {
+                const response = await fetch('https://api.example.com/data');
+                const data = await response.json();
+                // Hiển thị dữ liệu từ API
+                document.getElementById('content').innerText = JSON.stringify(data);
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+
+        // Chờ cho đến khi trang web được tải xong, sau đó gọi fetchData()
+        window.onload = fetchData;
+    </script>
+</body>
+</html>
