@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Winning Bypasser</title>
     <link
-      href="https://cdn.discordapp.com/attachments/1222896892791357521/1222906659819491349/7b6dITD.png?ex=6617eb94&is=66057694&hm=40b8649205fea08499d338c8d4770fc3691418b4f41405ccc8e5e80f1d1a42a6&"
+      href="https://cdn.discordapp.com/attachments/1209140900823830608/1221651994251497503/VbwMy1t.png?ex=66135b14&is=6600e614&hm=bfd728d528b830dbff41b65e33c133084c22438dbf3e9c53424823abfe765caf&"
       rel="shortcut icon"
       type="image/x-icon"
     />
     <link
-      href="https://cdn.discordapp.com/attachments/1222896892791357521/1222906659819491349/7b6dITD.png?ex=6617eb94&is=66057694&hm=40b8649205fea08499d338c8d4770fc3691418b4f41405ccc8e5e80f1d1a42a6&"
+      href="https://cdn.discordapp.com/attachments/1209140900823830608/1221651994251497503/VbwMy1t.png?ex=66135b14&is=6600e614&hm=bfd728d528b830dbff41b65e33c133084c22438dbf3e9c53424823abfe765caf&"
       rel="apple-touch-icon"
     />
     <style>
@@ -126,1322 +126,225 @@
         border-radius: 80px;
         font-size: 80px;
       }
-      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  text-decoration: none;
-  border: none;
-  outline: none;
-  scroll-behavior: smooth;
-  font-family: "Poppins", sans-serif;
-}
-:root {
-  --bg-color: #fff;
-  --scroll-button-color: #aaa;
-  --header-bg-color: #aaa;
-  --second-bg-color: #ccc;
-  --third-bg-color: #ddd;
-  --text-color: #000;
-  --main-color: #554242;
-  --switch-color: #7c6060;
-  --switch-bg-color: #fff;
-}
-
-/* Global Styles */
-html {
-  font-size: 62.5%;
-  overflow-x: hidden;
-}
-
-li {
-  list-style: none;
-}
-
-a {
-  text-decoration: none;
-}
-
-/* Navbar Styles */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 1.5rem;
-  position: relative;
-}
-
-.hamburger {
-  display: none;
-}
-
-.bar {
-  display: block;
-  width: 25px;
-  height: 3px;
-  margin: 5px auto;
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-  background-color: #101010;
-}
-
-.nav-menu {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.navbar a {
-  font-size: 1.7rem;
-  color: var(--text-color);
-  margin-left: 4rem;
-  transition: 0.3s;
-}
-
-.navbar a:hover,
-.navbar a.active {
-  color: var(--main-color);
-}
-
-/* Media Query for Mobile */
-@media only screen and (max-width: 768px) {
-  .nav-menu {
-    position: fixed;
-    left: -100%;
-    top: 5rem;
-    flex-direction: column;
-    background: var(--second-bg-color);
-    width: 100%;
-    border-radius: 10px;
-    text-align: center;
-    transition: 0.3s;
-    box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
-
-    position: fixed;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    padding: 1rem 3%;
-    background: var(--second-bg-color);
-    border-top: 0.1rem solid rgba(0, 0, 0, 0.2);
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
-  }
-
-  .nav-menu.active {
-    left: 0;
-  }
-
-  .nav-item {
-    margin: 2.5rem 0;
-  }
-
-  .hamburger {
-    display: block;
-    cursor: pointer;
-  }
-
-  .hamburger.active .bar:nth-child(2) {
-    opacity: 0;
-  }
-
-  .hamburger.active .bar:nth-child(1) {
-    -webkit-transform: translateY(8px) rotate(45deg);
-    transform: translateY(8px) rotate(45deg);
-  }
-
-  .hamburger.active .bar:nth-child(3) {
-    -webkit-transform: translateY(-8px) rotate(-45deg);
-    transform: translateY(-8px) rotate(-45deg);
-  }
-}
-
-/* Webkit Scrollbar Styles */
-::-webkit-scrollbar {
-  width: 0.5rem;
-}
-
-::-webkit-scrollbar-track {
-  background-color: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: transparent;
-}
-
-/* Body Styles */
-body {
-  background: var(--bg-color);
-  color: var(--text-color);
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-
-body.dark-mode {
-  --bg-color: #303030;
-  --second-bg-color: #202020;
-  --header-bg-color: #202020;
-  --third-bg-color: #151515;
-  --text-color: #ffffff;
-  --main-color: rgb(127, 139, 140);
-}
-
-/* Section Styles */
-section {
-  min-height: 100vh;
-  padding: 15rem 9% 2rem;
-}
-
-/* Header Styles */
-.header {
-  position: fixed;
-  top: 30px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: calc(100% - 40px);
-  padding: 1rem 2rem;
-  background: var(--header-bg-color);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 100;
-  border-radius: 20px;
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.3s ease-in-out;
-}
-
-.header.transparent {
-  background-color: rgba(16, 16, 16, 0.5);
-  backdrop-filter: blur(5px);
-  transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
-}
-
-.header.sticky {
-  border-bottom: 0.1rem solid rgba(0, 0, 0, 0.2);
-}
-
-.logo {
-  font-size: 2.5rem;
-  color: var(--text-color);
-  font-weight: 370;
-  cursor: default;
-}
-
-#menu {
-  font-size: 3.6rem;
-  color: var(--text-color);
-  display: none;
-}
-
-.btn-login {
-  display: inline-block;
-  padding: 0.8rem 2.8rem;
-  margin-top: 2rem;
-  margin: 0.5rem;
-  background: #3994ff;
-  border-radius: 10px;
-  box-shadow: 0px 0px 25px 7px rgba(0, 0, 0, 0.5);
-  font-size: 1.6rem;
-  color: var(--second-bg-color);
-  letter-spacing: 0.1rem;
-  font-weight: 400;
-  transition: 0.5s ease;
-}
-
-.btn-login:hover {
-  border-radius: 20px;
-  background-color: #0077ff;
-  color: #ffffff !important;
-  box-shadow: 0px 0px 50px 7px rgba(0, 0, 0, 0.5);
-}
-
-/* Home Styles */
-.home-content {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.home {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.home-content h1,
-.home-content h3,
-.home-content p {
-  margin: 1rem 0;
-}
-
-.home-content h3 {
-  font-size: 3.2rem;
-  font-weight: 500;
-}
-
-.home-content h3:nth-of-type(2) {
-  margin-bottom: 2rem;
-}
-
-.home-content h3 span {
-  color: var(--main-color);
-}
-
-.home-content h1 {
-  font-size: 5.6rem;
-  font-weight: 500;
-  line-height: 1.3;
-}
-
-.home-content p {
-  font-size: 1.6rem;
-}
-
-.social-media a {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  width: 4rem;
-  height: 4rem;
-  background: transparent;
-  border: 0.2rem solid var(--main-color);
-  border-radius: 50%;
-  font-size: 2rem;
-  color: var(--main-color);
-  margin: 3rem 1.5rem 3rem 0;
-  transition: 0.5s ease;
-}
-
-.social-media a:hover {
-  background: var(--main-color);
-  color: var(--bg-color);
-  box-shadow: 0px 0px 25px 7px rgba(0, 0, 0, 0.5);
-}
-
-.btn {
-  display: inline-block;
-  padding: 0.8rem 2.8rem;
-  margin-top: 2rem;
-  margin: 0.5rem;
-  background: #3994ff;
-  border-radius: 20px;
-  box-shadow: 0px 0px 25px 7px rgba(0, 0, 0, 0.5);
-  font-size: 1.6rem;
-  color: white;
-  letter-spacing: 0.1rem;
-  font-weight: 400;
-  transition: 0.5s ease;
-}
-
-.btn:hover {
-  border-radius: 10px;
-  background-color: #0077ff;
-  color: #ffffff !important;
-  box-shadow: 0px 0px 50px 7px rgba(0, 0, 0, 0.5);
-  transform: translateY(-10px);
-}
-
-.btn-gray {
-  display: inline-block;
-  padding: 0.8rem 2.8rem;
-  margin: 0.5rem 0.5rem 0.5rem 0;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 20px;
-  box-shadow: 0px 0px 25px 7px rgba(0, 0, 0, 0.5);
-  font-size: 1.6rem;
-  color: var(--text-color);
-  letter-spacing: 0.1rem;
-  font-weight: 400;
-  transition: 0.5s ease;
-}
-
-.btn-gray:hover {
-  border-radius: 10px;
-  background-color: rgba(255, 255, 255, 0.231);
-  color: var(--text-color) !important;
-  box-shadow: 0px 0px 50px 7px rgba(0, 0, 0, 0.5);
-  transform: translateY(-10px);
-}
-
-.heading {
-  text-align: center;
-  font-size: 4.5rem;
-}
-
-/* Media Query for mobile */
-@media (max-width: 1200px) {
-  html {
-    font-size: 55%;
-  }
-}
-
-@media (max-width: 991px) {
-  .header {
-    padding: 2rem 3%;
-  }
-
-  section {
-    padding: 10rem 3% 2rem;
-  }
-
-  .footer {
-    padding: 2rem 3%;
-  }
-
-  .home {
-    margin-top: 100px;
-  }
-
-  .home-content {
-    margin-bottom: 100px;
-  }
-}
-
-@media (max-width: 768px) {
-  #menu {
-    display: block;
-    cursor: pointer;
-  }
-
-  .navbar {
-    position: absolute;
-    display: none;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    padding: 1rem 3%;
-    background: var(--second-bg-color);
-    border-top: 0.1rem solid rgba(0, 0, 0, 0.2);
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
-    border-radius: 20px;
-  }
-
-  .navbar a {
-    display: block;
-    font-size: 2rem;
-    margin: 3rem 0;
-  }
-
-  .home {
-    flex-direction: column;
-  }
-
-  .home-content h3 {
-    font-size: 2.6rem;
-  }
-
-  .home-content h1 {
-    font-size: 5rem;
-  }
-}
-
-@media (max-width: 617px) {
-}
-
-@media (max-width: 450px) {
-  html {
-    font-size: 50%;
-    scrollbar-width: none;
-  }
-}
-
-@media (max-width: 350px) {
-  .footer {
-    flex-direction: column-reverse;
-  }
-
-  .footer p {
-    text-align: center;
-    margin-top: 2rem;
-  }
-}
-
-/* Keyframe animations */
-@keyframes slideRight {
-  0% {
-    transform: translateX(-100px);
-    opacity: 0;
-  }
-
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-@keyframes slideLeft {
-  0% {
-    transform: translateX(100px);
-    opacity: 0;
-  }
-
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-@keyframes slideTop {
-  0% {
-    transform: translateY(100px);
-    opacity: 0;
-  }
-
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-@keyframes slideBottom {
-  0% {
-    transform: translateY(-100px);
-    opacity: 0;
-  }
-
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-@keyframes zoomIn {
-  0% {
-    transform: scale(0);
-    opacity: 0;
-  }
-
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-@keyframes floatImage {
-  0% {
-    transform: translateY(0);
-    opacity: 0;
-  }
-
-  50% {
-    transform: translateY(-20px);
-    opacity: 1;
-  }
-
-  100% {
-    transform: translateY(0);
-    opacity: 0;
-  }
-}
-
-.logo-image {
-  display: block;
-  width: 60px;
-  height: auto;
-}
-
-/* Feature Styles */
-.feature-section {
-  background: var(--second-bg-color);
-  padding: 10rem 0;
-  text-align: center;
-}
-
-.feature-section h2 {
-  margin-bottom: 7rem;
-  color: var(--text-color);
-}
-
-.feature-content {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  gap: 4rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.feature-box {
-  flex: 1 1 calc(33.33% - 4rem);
-  background: var(--third-bg-color);
-  border-radius: 15px;
-  padding: 3rem;
-  box-shadow: 0px 0px 25px 7px rgba(0, 0, 0, 0.5);
-  transition: transform 0.3s ease-in-out;
-  text-align: center;
-  height: 470px;
-}
-
-.feature-box:hover {
-  transform: translateY(-10px);
-}
-
-.feature-image img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 10px;
-  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
-}
-
-.feature-description h3 {
-  font-size: 2.2rem;
-  margin-top: 2rem;
-  color: var(--main-color);
-}
-
-.feature-description p {
-  font-size: 1.6rem;
-  margin-top: 1rem;
-}
-
-/* Reviews Styles */
-.reviews {
-  background: var(--second-bg-color);
-  padding: 8rem 0;
-  text-align: center;
-  color: var(--text-color);
-}
-
-.reviews h2 {
-  color: var(--text-color);
-  margin-bottom: 15rem;
-}
-
-.review-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  margin-top: 3rem;
-}
-
-.review-box {
-  background-color: var(--third-bg-color);
-  border-radius: 15px;
-  padding: 2rem;
-  margin: 1.5rem;
-  width: 30rem;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-  max-height: 550px;
-  transition: transform 0.3s ease-in-out;
-}
-
-.review-box:hover {
-  transform: translateY(-10px);
-}
-
-.review-content {
-  font-size: 1.6rem;
-  margin-bottom: 1.5rem;
-}
-
-.review-content p {
-  font-size: 1.7rem;
-  margin-bottom: 0.5rem;
-}
-
-.user-avatar {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 1rem;
-}
-
-.review-author h3 {
-  font-size: 2rem;
-}
-
-.review-author p {
-  font-size: 1.6rem;
-}
-
-.review-source img {
-  width: 130px;
-  height: inherit;
-  margin-top: -0.3rem;
-}
-
-.review-btn {
-  display: inline-block;
-  padding: 1rem 1.8rem;
-  margin-top: 2rem;
-  margin: 0.5rem;
-  background: #3994ff;
-  border-radius: 10px;
-  box-shadow: 0px 0px 25px 7px rgba(0, 0, 0, 0.5);
-  font-size: 2rem;
-  color: white;
-  letter-spacing: 0.1rem;
-  font-weight: 400;
-  transition: 0.5s ease;
-  cursor: pointer;
-}
-
-.review-btn:hover {
-  background-color: #0077ff;
-  color: #ffffff !important;
-  transform: translateY(-10px);
-  box-shadow: 0px 0px 50px 7px rgba(0, 0, 0, 0.5);
-}
-
-@media only screen and (max-width: 768px) {
-  .review-box {
-    width: 80%;
-    margin: 1.5rem auto;
-  }
-}
-
-/* FAQ Styles */
-.faq {
-  background: var(--second-bg-color);
-}
-
-.faq h2 {
-  margin-bottom: 1.2rem;
-  color: var(--text-color);
-}
-
-.faq-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2rem;
-  padding: 5vh 0% 1vh;
-}
-
-.collapsible {
-  width: 100%;
-  max-width: 600px;
-  margin: 0 auto;
-  background-color: var(--third-bg-color);
-  border-radius: 15px;
-  border: 0.2rem solid var(--bg-color);
-  box-shadow: 0px 0px 15px 7px rgba(0, 0, 0, 0.3);
-}
-
-.collapsible-header {
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  padding: 1rem;
-}
-
-.collapsible-header h3 {
-  font-size: 1.8rem;
-  margin-left: 1rem;
-}
-
-.collapsible-content {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease-in-out, transform 0.3s ease-in-out;
-  padding: 0px 10px;
-}
-
-.collapsible-content p {
-  font-size: 1.6rem;
-  padding: 1rem;
-}
-
-.show-content {
-  max-height: 500px;
-  padding: 0px 10px;
-}
-
-.collapsible-header i {
-  transition: transform 0.3s ease;
-  transform-origin: center;
-}
-
-.collapsible-content {
-  overflow: hidden;
-  max-height: 0;
-  transition: max-height 0.3s ease;
-}
-
-.collapsible-content.show-content {
-  max-height: 500px;
-}
-
-.collapsible-header .bx-chevron-right {
-  transition: transform 0.3s ease;
-  transform-origin: center;
-}
-
-.collapsible-content.show-content + .collapsible-header .bx-chevron-right {
-  transform: rotate(90deg);
-}
-
-/* Credits Style*/
-.bot-credits {
-  background: var(--second-bg-color);
-  padding: 8rem 0;
-  text-align: center;
-  color: var(--text-color);
-}
-
-.bot-credits h2 {
-  color: var(--text-color);
-  margin-bottom: 5rem;
-}
-
-.second-heading {
-  font-size: 3rem !important;
-  margin-top: 4rem;
-}
-
-.credit-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  margin-top: 3rem;
-}
-
-.credit-box {
-  background-color: var(--third-bg-color);
-  border-radius: 15px;
-  padding: 2rem;
-  margin: 1.5rem;
-  width: 30rem;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-  max-height: 550px;
-  transition: transform 0.3s ease-in-out;
-}
-
-.credit-box:hover {
-  transform: translateY(-10px);
-}
-
-.user-avatar {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 1rem;
-}
-
-.shadowed {
-  box-shadow: 0px 0px 25px 7px rgba(0, 0, 0, 0.5);
-}
-
-.user-details h3 {
-  font-size: 2rem;
-}
-
-.user-details p {
-  color: rgb(165, 163, 163);
-  font-size: 1.6rem;
-  margin-bottom: 0.5rem;
-}
-
-/* Footer Styles */
-.footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  padding: 2rem 9%;
-  background: var(--third-bg-color);
-}
-
-.footer-text p {
-  font-size: 1.6rem;
-}
-
-.footer-iconTop a {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0.8rem;
-  background: var(--main-color);
-  border-radius: 0.8rem;
-  transition: 0.5s ease;
-}
-
-.footer-iconTop a:hover {
-  box-shadow: 0px 0px 25px 7px rgba(0, 0, 0, 0.5);
-}
-
-.footer-iconTop a i {
-  font-size: 2.4rem;
-  color: var(--third-bg-color);
-}
-
-.footer-credits {
-  color: rgb(90, 90, 195);
-  transition: 0.3s;
-}
-
-.footer-credits:hover {
-  color: rgb(51, 51, 202);
-  transition: 0.3s;
-}
-
-/* Scroll Top Button Style */
-.scroll-to-top {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  height: 50px;
-  width: 50px;
-  background-color: var(--scroll-button-color);
-  color: white;
-  border-radius: 50%;
-  padding: 10px;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out,
-    opacity 0.5s ease-in-out;
-  cursor: default;
-  font-size: 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-}
-
-.scroll-to-top:hover {
-  background-color: #275457;
-  box-shadow: 0px 0px 25px 7px rgba(0, 0, 0, 0.5);
-  transform: scale(1.1);
-}
-
-.scroll-to-top i {
-  cursor: default;
-  color: black;
-}
-
-.scroll-to-top a {
-  cursor: default;
-}
-
-/* Dark/Light switch */
-.mode-switch {
-  display: inline-block;
-  position: relative;
-}
-.mode-switch input[type="checkbox"] {
-  display: none;
-}
-
-.mode-switch .toggle-label {
-  display: block;
-  width: 60px;
-  height: 30px;
-  background-color: var(--switch-bg-color);
-  border-radius: 30px;
-  position: relative;
-  cursor: pointer;
-}
-
-.mode-switch .toggle-label::after {
-  content: "";
-  width: 30px;
-  height: 30px;
-  background-color: var(--switch-color);
-  border-radius: 50%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  transition: 0.3s;
-}
-
-.mode-switch input[type="checkbox"]:checked + .toggle-label::after {
-  left: 31px;
-}
-
-.mode-switch .toggle-icon {
-  font-size: 20px;
-  line-height: 30px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 30px;
-  text-align: center;
-  transition: 0.3s;
-}
-
-.mode-switch .dark-icon {
-  color: #7c6060;
-}
-
-.mode-switch .light-icon {
-  color: #7c6060;
-}
-
-.mode-switch .light-icon {
-  left: 31px;
-}
-
-.mode-switch input[type="checkbox"] + .toggle-label + .light-icon {
-  opacity: 1;
-}
-
-.mode-switch input[type="checkbox"] + .toggle-label + .dark-icon {
-  opacity: 0;
-}
-
-.fa-star {
-  color: gold;
-}
-
-.fa-star-o {
-  color: gold;
-}
-
-.user-details-container {
-  background: rgba(255, 255, 255, 0.2); 
-  border-radius: 10px;
-  padding: 10px;
-  backdrop-filter: blur(5px); 
-}
-
-.user-details p {
-  color: #3b3b3b;
-}
-.credit-box:hover .user-details-container {
-  background: rgba(255, 255, 255, 0.4); 
-  transition: background 0.3s ease-in-out;
-}
     </style>
-</head>
-
-
-<body>
-    <!-- HEADER -->
-    <header class="header">
-      <a href="https://discord.com/invite/MjHNvzk7Wj" class="logo">
-        <div class="user-details-container">
-          <img src="https://cdn.discordapp.com/attachments/1222896892791357521/1222906659819491349/7b6dITD.png?ex=6617eb94&is=66057694&hm=40b8649205fea08499d338c8d4770fc3691418b4f41405ccc8e5e80f1d1a42a6&" style="border-radius: 24px;" alt="Winning Logo" class="logo-image"
-            id="light-mode-logo">
-        </div>
-      </a>
-  
-      <i class="bx bx-menu" id="menu"></i>
-      <nav class="navbar">
-        <div class="mode-switch">
-          <input type="checkbox" id="dark-mode-toggle">
-          <label for="dark-mode-toggle" class="toggle-label">
-            <i class="fas fa-moon toggle-icon dark-icon"></i>
-            <i class="fas fa-sun toggle-icon light-icon"></i>
-          </label>
-        </div>
-        <a id="refresh" class="active">Home</a>
-        <a href="#features">Features</a>
-        <a href="/join">Invite</a>
-        <a href="/executors">Executors</a>
-        <a href="/bypass">Bypass</a>
-        </a>
-  
-        <script>
-          const refreshButton = document.getElementById('refresh');
-          refreshButton.addEventListener('click', () => window.location.assign('https://anreday235.github.io'));
-        </script>
-      </nav>
-    </header>
-    <!-- HEADER END -->
-  
-    <!-- HOME -->
-    <section class="home" id="home">
-      <div id="plexus-background"></div>
-      <div class="home-content">
-        <div class="user-details-container">
-          <img src="https://cdn.discordapp.com/attachments/1222896892791357521/1222906659446329364/BFI1q2n.gif?ex=6617eb94&is=66057694&hm=a81155473de83b2cc616e9864187177cddc7e7214c90e13a6a554e4a2051e69e&" style="width: 170px; height: 170px; border-radius: 24px;" alt="Winning Logo"
-            class="logo-image">
-        </div>
-        <h1>Winning Smile</h1>
-        <h3>
-          <span class="multiple-text">
-            <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&pause=1000&color=F70000&random=false&width=600&lines=The+Smile+Always+Winning+%2C+The+Smile+Always+Happy;Smile+in+here+play+with+you+%2C+Smile+help+you+....;Command+Status-Api+to+check+quota+or+API+status;Smile+help+you+bypass+Keysystem+roblox+......;Has+more+exploit+android+in+Button+Executors">
-          </span>
-        </h3>
-        <span class="typed-cursor" aria-hidden="true">|</span>
-        <p style="color: white;">
-          Get Winning by clicking the button below or joining the Discord server
-          using the navigation below
-        </p>
-        <div class="social-media">
-          <a href="https://discord.com/invite/MjHNvzk7Wj" target="_blank">
-            <i class="bx bxl-discord"></i>
-          </a>
-          <a href="https://www.youtube.com/@WinningNot" target="_blank">
-            <i class="bx bxl-youtube"></i>
-          </a>
-          <a href="https://github.com/AnreHub235" target="_blank">
-            <i class="bx bxl-github"></i>
-          </a>
-        </div>
-        <div class="btn-container">
-          <a href="#features" class="btn-gray">
-            <i class="bx bx-chevron-down"></i> See Features
-          </a>
-        </div>
-      </div>
-      </div>
-    </section>
-    <!-- HOME END -->
-  
-    
-  
-        <div
-          style="background-image: url('https://i.pinimg.com/originals/87/59/fc/8759fc10b242ffe8025e2033b53770dd.gif'); background-size: cover; background-position: center;  background-repeat: no-repeat;"
-          class="feature-box">
-          <div class="feature-image">
-            <img src="https://cdn.discordapp.com/attachments/1222896892791357521/1223326393765724200/CUEJbLV.png?ex=6619727c&is=6606fd7c&hm=704cd2887fb0cad98dfa58829e0512831edcedab96ce4006140d82d40035b028&" alt="Codex">
-          </div>
-          <div class="user-details-container">
-            <div class="feature-description">
-              <h3>Bypass - Roblox Keysystem</h3>
-              <p>
-                We has a All Command Bypass without fluxus
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- FEATURES END -->
-  
-  
-        <!-- CREDITS -->
-        <section class="bot-credits">
-          <h2 class="heading"><span>Main Credits</span></h2>
-          <div class="credit-container">
-            <div
-              style="background-image: url('https://cdn.discordapp.com/attachments/1222896892791357521/1222906750609526784/Izj2qpq.gif?ex=6617eba9&is=660576a9&hm=10820da3df4a53d4c3d3b7db4e4aeb8aa4fd97ebbfc94d4fb6fec17a2f6fc652&'); background-size: cover; background-position: center;  background-repeat: no-repeat;"
-              class="credit-box">
-              <img src="https://cdn.discordapp.com/avatars/725607271945732157/70b2dc034311db73388ddf7dbde479af.webp?size=4096" alt="Ekky" class="user-avatar">
-              <div class="user-details-container">
-                <div class="user-details">
-                  <h3>moroxi</h3>
-                  <p style="color: white;">Owner/Main Developer</p>
-                  <span style="color: white;">FrontEnd & BackEnd</span></p>
-                </div>
-              </div>
-            </div>
-            <div
-              style="background-image: url('https://cdn.discordapp.com/attachments/1222896892791357521/1223334952603746465/IoARz2p.gif?ex=66197a75&is=66070575&hm=6f5c05b2b85917ec7f07f9a5579e022e5538e1740d18b90461c85153159081d6&'); background-size: cover; background-position: center;  background-repeat: no-repeat;"
-              class="credit-box">
-              <img
-                src="https://cdn.discordapp.com/avatars/569074349261193237/b467951e357552d623570d599ac6da6a.webp?size=4096"
-                alt="User 2" class="user-avatar shadowed">
-              <div class="user-details-container">
-                <div class="user-details">
-                  <h3>.conel</h3>
-                  <p>Developer</p>
-                  <span style="color: black;">API Bypass & Bot Discord</span></p>
-                </div>
-              </div>
-            </div>
-            <div
-              style="background-image: url('https://favim.com/pd/s11/orig/8/848/8483/84834/anime-sky-pink-Favim.com-8483438.gif'); background-size: cover; background-position: center;  background-repeat: no-repeat;"
-              class="credit-box" class="credit-box">
-              <img
-                src="https://cdn.discordapp.com/avatars/1141643603375034428/eec3653167204b005e0ea0b55c267401.webp?size=4096"
-                alt="User 4" class="user-avatar shadowed">
-              <div class="user-details-container">
-                <div class="user-details">
-                  <h3>ninomiya_.</h3>
-                  <p>Admin</p>
-                  <span style="color: red;">The smile always lose, i hate myself</span></p>
-                </div>
-              </div>
-            </div>
-          </div>
-  <h2 class="heading second-heading"><span>Helpers</span></h2>
-          <div class="credit-container">
-            <div
-              style="background-image: url('https://gifdb.com/images/high/aesthetic-background-498-x-250-gif-iokudgj99c8gey35.webp'); background-size: cover; background-position: center;  background-repeat: no-repeat;"
-              class="credit-box" class="credit-box">
-              <img
-                src="https://cdn.discordapp.com/avatars/814909663736627262/0bb8300c2523137b943ff144c7c0e39e.webp?size=4096"
-                alt="User 4" class="user-avatar shadowed">
-              <div class="user-details-container">
-                <div class="user-details">
-                  <h3>slyer3663</h3>
-                  <p>Helper</p>
-                  <span style="color: black;">Helper</span></p>
-                </div>
-              </div>
-            </div>
-      <div
-      style="background-image: url('https://media1.tenor.com/m/O14R4p9-t-sAAAAd/get-stick-bugged-lol.gif'); background-size: cover; background-position: center;  background-repeat: no-repeat;"
-      class="credit-box" class="credit-box">
-      <img
-        src="https://cdn.discordapp.com/avatars/715462490892402738/843cba83efec0b755b3d804fdb3a8d14.webp?size=4096"
-        alt="User 4" class="user-avatar shadowed">
-      <div class="user-details-container">
-        <div class="user-details">
-          <h3>figris_.</h3>
-          <p>Helper</p>
-          <span style="color: #0077ff;">Helper</span></p>
-        </div>
+  </head>
+  <body>
+    <div id="status">API Status: Loading...</div>
+    <div id="quota">API Quota: Loading...</div>
+    <div id="plexus-background"></div>
+    <div class="loader">Loading...</div>
+    <div id="form-container">
+      <h2 style="color: #fff">Winning Bypass!</h2>
+      <input
+        type="text"
+        id="url"
+        class="textbox"
+        placeholder="URL to bypass"
+        required
+      />
+      <br />
+      <button id="bypassButton" class="button">Bypass</button>
+    </div>
+    <div class="notification-container">
+      <div class="notification">
+        <a href="https://discord.com/invite/MjHNvzk7Wj" style="color: #fff"
+          >DISCORD SERVER</a
+        >
       </div>
     </div>
-  </div>
-</div>
-
-    </section>
-    <style>
-      .user-details-container {
-        background: rgba(255, 255, 255, 0.2);
-        border-radius: 10px;
-        padding: 10px;
-        backdrop-filter: blur(5px);
-      }
-  
-      .user-details p {
-        color: #3b3b3b;
-      }
-  
-      .credit-box:hover .user-details-container {
-        background: rgba(255, 255, 255, 0.4);
-        transition: background 0.3s ease-in-out;
-      }
-  
-      #plexus-background {
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: -1;
-      }
-    </style>
-    <!-- CREDITS END -->
-  
-    <!-- FOOTER -->
-    <footer class="footer">
-      <div class="footer-text">
-        <p>
-          Copyright
-          <i class="fa-solid fa-copyright"></i>
-          2024 by Winning Smile | All Rights Reserved -
-          <a class="footer-credits" target="_blank" href="https://github.com/AnreHub235">WinningSquad</a>
-        </p>
-      </div>
-    </footer>
-    <!-- FOOTER END -->
-  
-    <!-- SCROLL TO TOP -->
-    <div class="scroll-to-top" onclick="topFunction()" id="scroll-to-top-btn">
-      <a href="#home"><i class="fa-solid fa-arrow-up" id="scroll-to-top-icon"></i></a>
-    </div>
-    <!-- SCROLL TO TOP END -->
-  
-    <style>
-      .user-details-container {
-        background: rgba(255, 255, 255, 0.2);
-        border-radius: 10px;
-        padding: 10px;
-        backdrop-filter: blur(5px);
-      }
-  
-      .user-details p {
-        color: #3b3b3b;
-      }
-  
-      .credit-box:hover .user-details-container {
-        background: rgba(255, 255, 255, 0.4);
-        transition: background 0.3s ease-in-out;
-      }
-  
-      #plexus-background {
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: -1;
-      }
-    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
     <script>
       let particles = [];
-      let canvas;
-  
+
       function setup() {
-        canvas = createCanvas(windowWidth, windowHeight);
-        canvas.parent('plexus-background');
-  
+        createCanvas(windowWidth, windowHeight).parent("plexus-background");
         let particleCount = isMobile() ? 30 : 100;
         for (let i = 0; i < particleCount; i++) {
           particles.push(new Particle());
         }
       }
-  
+
       function draw() {
         background(0);
-  
-        for (let particle of particles) {
+        particles.forEach((particle) => {
           particle.update();
           particle.display();
           particle.connect(particles);
-        }
+        });
       }
-  
+
       function windowResized() {
         resizeCanvas(windowWidth, windowHeight);
-        resetParticles();
-      }
-  
-      function resetParticles() {
         particles = [];
         let particleCount = isMobile() ? 30 : 100;
         for (let i = 0; i < particleCount; i++) {
           particles.push(new Particle());
         }
       }
-  
+
+      function isMobile() {
+        return window.innerWidth <= 767;
+      }
       class Particle {
         constructor() {
           this.position = createVector(random(width), random(height));
-          this.velocity = createVector(random(-1, 1), random(-1, 1));
+          this.velocity = p5.Vector.random2D();
           this.radius = 4;
         }
-  
         update() {
           this.position.add(this.velocity);
-  
           if (this.position.x < 0 || this.position.x > width) {
             this.velocity.x *= -1;
           }
-  
           if (this.position.y < 0 || this.position.y > height) {
             this.velocity.y *= -1;
           }
         }
-  
         display() {
           noStroke();
           fill(255);
-          ellipse(this.position.x, this.position.y, this.radius * 2, this.radius * 2);
+          ellipse(this.position.x, this.position.y, this.radius * 2);
         }
-  
-        connect(others) {
-          for (let other of others) {
-            if (other !== this) {
-              let d = dist(this.position.x, this.position.y, other.position.x, other.position.y);
-              let connectRadius = isMobile() ? 150 : 150;
-              if (d < connectRadius) {
-                stroke(255, 50);
-                line(this.position.x, this.position.y, other.position.x, other.position.y);
-              }
+        connect(particles) {
+          particles.forEach((other) => {
+            let d = dist(
+              this.position.x,
+              this.position.y,
+              other.position.x,
+              other.position.y
+            );
+            if (d < 150) {
+              stroke(255, 50);
+              line(
+                this.position.x,
+                this.position.y,
+                other.position.x,
+                other.position.y
+              );
             }
-          }
+          });
         }
       }
-  
-      async function isMobile() {
-        return await window.innerWidth <= 767;
-      }
-  
     </script>
-  
-    <!-- SCRIPTS -->
-    <script src="https://unpkg.com/scrollreveal"></script>
-    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
-  
-  <script>(function(){if (!document.body) return;var js = "window['__CF$cv$params']={r:'86b46dab68053f70',t:'MTcxMTU5NTQzOS45NjgwMDA='};_cpo=document.createElement('script');_cpo.nonce='',_cpo.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js',document.getElementsByTagName('head')[0].appendChild(_cpo);";var _0xh = document.createElement('iframe');_0xh.height = 1;_0xh.width = 1;_0xh.style.position = 'absolute';_0xh.style.top = 0;_0xh.style.left = 0;_0xh.style.border = 'none';_0xh.style.visibility = 'hidden';document.body.appendChild(_0xh);function handler() {var _0xi = _0xh.contentDocument || _0xh.contentWindow.document;if (_0xi) {var _0xj = _0xi.createElement('script');_0xj.innerHTML = js;_0xi.getElementsByTagName('head')[0].appendChild(_0xj);}}if (document.readyState !== 'loading') {handler();} else if (window.addEventListener) {document.addEventListener('DOMContentLoaded', handler);} else {var prev = document.onreadystatechange || function () {};document.onreadystatechange = function (e) {prev(e);if (document.readyState !== 'loading') {document.onreadystatechange = prev;handler();}};}})();</script></body>
-  
-  </html>
+    <script>
+      function fetchApiStatusAndQuota() {
+        const apiURL = "https://stickx.top/api-key/";
+        fetch(apiURL)
+          .then((response) => response.json())
+          .then((data) => {
+            document.getElementById(
+              "status"
+            ).textContent = `API Status: ${data.status}`;
+            const quota =
+              data.data && data.data[0] ? data.data[0].quota : "Unavailable";
+            document.getElementById(
+              "quota"
+            ).textContent = `API Quota: ${quota}`;
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+            document.getElementById("status").textContent =
+              "API Status: Error loading status";
+            document.getElementById("quota").textContent =
+              "API Quota: Error loading quota";
+          });
+      }
+
+      let i = 1;
+
+      while (true) {
+        fetchApiStatusAndQuota();
+        i++;
+
+        if (i > 5) {
+          break;
+        }
+      }
+
+      document
+        .getElementById("bypassButton")
+        .addEventListener("click", function () {
+          const urlInput = document.getElementById("url");
+          const url = urlInput.value;
+          if (!url) {
+            alert("Please enter a URL to bypass.");
+            return;
+          }
+          document.querySelector(".loader").style.display = "block";
+          let bypassUrl;
+          if (url.includes("spdmteam")) {
+            const hwid = url.split("?hwid=")[1].split("&")[0];
+            bypassUrl = `https://stickx.top/api-arceusx/?hwid=${encodeURIComponent(
+              hwid
+            )}&api_key=E99l9NOctud3vmu6bPne`;
+          } else if (url.includes("mobile.codex.lol")) {
+            const token = url.split("?token=")[1];
+            bypassUrl = `https://stickx.top/api-codex/?token=${encodeURIComponent(
+              token
+            )}&api_key=E99l9NOctud3vmu6bPne`;
+          } else if (url.includes("https://gateway.platoboost.com/a/2569")) {
+            const id = url.split("?id=")[1];
+            bypassUrl = `https://stickx.top/api-hydrogen/?hwid=${encodeURIComponent(
+              id
+            )}&api_key=E99l9NOctud3vmu6bPne`;
+          } else if (url.includes("hohohubv")) {
+            const hwid = url.split("?hwid=")[1];
+            bypassUrl = `https://stickx.top/api-hohohubv/?hwid=${encodeURIComponent(
+              hwid
+            )}&api_key=E99l9NOctud3vmu6bPne`;
+          } else if (
+            url.includes("trigonevo.com") ||
+            url.includes(
+              "https://pandadevelopment.net/getkey?service=trigon-evo"
+            )
+          ) {
+            const hwid = url.includes("trigonevo.com")
+              ? url.split("/?hwid=")[1]
+              : url.split("&hwid=")[1];
+            bypassUrl = `https://stickx.top/api-trigon/?hwid=${encodeURIComponent(
+              hwid
+            )}&api_key=E99l9NOctud3vmu6bPne`;
+          } else if (url.includes("https://gateway.platoboost.com/a/8")) {
+            const id = url.split("?id=")[1];
+            bypassUrl = `https://stickx.top/api-delta/?hwid=${encodeURIComponent(
+              id
+            )}&api_key=E99l9NOctud3vmu6bPne`;
+          } else if (
+            url.includes("https://pandadevelopment.net/getkey?service=vegax")
+          ) {
+            const hwid = url.split("&hwid=")[1];
+            bypassUrl = `https://stickx.top/api-vegax/?hwid=${encodeURIComponent(
+              hwid
+            )}&api_key=E99l9NOctud3vmu6bPne`;
+          } else {
+            alert("Invalid URL.");
+            document.querySelector(".loader").style.display = "none";
+            return;
+          }
+          fetch(bypassUrl)
+            .then((response) => response.json())
+            .then((data) => {
+              document.querySelector(".loader").style.display = "none";
+              if (data.key) {
+                const bypassContainer =
+                  document.getElementById("form-container");
+                window.location.assign(
+                  `https://anrehub235.github.io/output.html?value=${data.key}`
+                );
+              } else {
+                if (data.message && data.message === "Invalid HWID") {
+                  urlInput.value = "Invalid HWID";
+                } else {
+                  alert("Bypass failed.");
+                }
+              }
+            })
+            .catch((error) => {
+              document.querySelector(".loader").style.display = "none";
+              console.error("Error:", error);
+              alert("Error bypassing URL. See console for more details.");
+            });
+        });
+    </script>
+  </body>
+</html>
