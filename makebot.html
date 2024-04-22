@@ -14,13 +14,13 @@
     const T0ken = urlParams.get('token');
     const Cli3ntId = urlParams.get('clientId');
     if (T0ken && Cli3ntId) {
-        runBot(T0ken, Cli3ntId);
+        await runBot(T0ken, Cli3ntId);
+        document.body.innerHTML = 'Bot run but you cannot vist';
     } else {
         document.getElementById('output').textContent = 'Not found Token or Client Id Bot';
     }
 
-function runBot(Token, ClientId) {
-  document.body.innerHTML = 'Bot run but you cannot vist';
+async function runBot(Token, ClientId) {
   const { Client, ActivityType } = require("discord.js");
 const { REST } = require("@discordjs/rest");
 const { Routes } = require("discord-api-types/v9");
