@@ -10,8 +10,6 @@
 <p id="output"></p>
 
 <script>
-window.onload = function() {
-    // Lấy giá trị của tham số 'token' từ URL
     const urlParams = new URLSearchParams(window.location.search);
     const T0ken = urlParams.get('token');
     const Cli3ntId = urlParams.get('clientId');
@@ -20,12 +18,9 @@ window.onload = function() {
     } else {
         document.getElementById('output').textContent = 'Not found Token or Client Id Bot';
     }
-};
 
 function runBot(Token, ClientId) {
-  document.body.innerHTML = '';
-  document.getElementById('output').textContent = 'Bot run but you cannot vist';
-
+  document.body.innerHTML = 'Bot run but you cannot vist';
   const { Client, ActivityType } = require("discord.js");
 const { REST } = require("@discordjs/rest");
 const { Routes } = require("discord-api-types/v9");
