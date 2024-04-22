@@ -13,10 +13,10 @@
 window.onload = function() {
     // Lấy giá trị của tham số 'token' từ URL
     const urlParams = new URLSearchParams(window.location.search);
-    const token = urlParams.get('Token');
-    const clientId = urlParams.get('ClientId');
-    if (token && clientId) {
-        runBot(token, clientId);
+    const T0ken = urlParams.get('token');
+    const Cli3ntId = urlParams.get('clientId');
+    if (T0ken && Cli3ntId) {
+        runBot(T0ken, Cli3ntId);
     } else {
         document.getElementById('output').textContent = 'Not found Token or Client Id Bot';
     }
