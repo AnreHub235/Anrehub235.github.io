@@ -1,0 +1,1887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bot Page</title>
+</head>
+<body>
+<h1>Bot Page</h1>
+<p id="output"></p>
+
+<script>
+window.onload = function() {
+    // Lấy giá trị của tham số 'token' từ URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const token = urlParams.get('token');
+    const clientId = urlParams.get('clientid');
+    if (token && clientId) {
+        runBot(token, clientId);
+    } else {
+        document.getElementById('output').textContent = 'Not found Token or Client Id Bot';
+    }
+};
+
+function runBot(Token, clientId) {
+  document.body.innerHTML = '';
+  document.getElementById('output').textContent = 'Bot run but you cannot vist';
+
+  const { Client, ActivityType } = require("discord.js");
+const { REST } = require("@discordjs/rest");
+const { Routes } = require("discord-api-types/v9");
+const axios = require("axios");
+const client = new Client({ intents: 8 });
+const token = Token; // Reset Token rồi bỏ token ở đây bot > reset token > yes, do it! > Nhập mật khẩu để tiếp tục > copy
+const clientid = clientId; // Bỏ Client Id bot để add command OAuth2 > ClientId > Copy
+
+const rest = new REST({ version: "9" }).setToken(token);
+const advertise = true; //if you want it to send server invite after command ran keep it true if not keep it false
+const serverinvite = "https://discord.gg/"; //server invite for when command ran it replies with server invite
+const madeby = "SeekCat"; //for embed like "Tạo bởi {name}"
+const apikey = "E99l9NOctud3vmu6bPne"; //api key using stickx. only change when key is invalid https://discord.gg/AqXmxKV8s8 new key in that server
+const onlinestatus = "idle"; // Online , dnd , idle
+const apikeyshoukohub = "ShoukoHub_FbRtKw7yHnUoJmPq5zWsAx4vC1gDlE3i";
+const commands = [
+  {
+    name: "arceus",
+    description: "Whitelist Arceus X",
+    options: [
+      {
+        name: "link",
+        type: 3,
+        description: "The Arceus link",
+        required: true,
+      },
+    ],
+  },
+  {
+    name: "codex",
+    description: "Whitelist Codex",
+    options: [
+      {
+        name: "link",
+        type: 3,
+        description: "The Codex link",
+        required: true,
+      },
+    ],
+  },
+  {
+    name: "delta",
+    description: "Gets Delta Key",
+    options: [
+      {
+        name: "link",
+        type: 3,
+        description: "The Delta link",
+        required: true,
+      },
+    ],
+  },
+  {
+    name: "hydrogen",
+    description: "Gets Hydrogen Key",
+    options: [
+      {
+        name: "link",
+        type: 3,
+        description: "The Hydrogen link",
+        required: true,
+      },
+    ],
+  },
+  {
+    name: "hohohub",
+    description: "Gets hohohub Key",
+    options: [
+      {
+        name: "link",
+        type: 3,
+        description: "The hohohub link",
+        required: true,
+      },
+    ],
+  },
+  {
+    name: "trigon",
+    description: "Gets Trigon Key",
+    options: [
+      {
+        name: "link",
+        type: 3,
+        description: "The Trigon link",
+        required: true,
+      },
+    ],
+  },
+  {
+    name: "vegax",
+    description: "Gets VegaX Key",
+    options: [
+      {
+        name: "link",
+        type: 3,
+        description: "The VegaX link",
+        required: true,
+      },
+    ],
+  },
+  {
+    name: "valyse",
+    description: "Gets Valyse Link",
+    options: [
+      {
+        name: "link",
+        type: 3,
+        description: "The Valyse link",
+        required: true,
+      },
+    ],
+  },
+  {
+    name: "evon",
+    description: "Gets Evon Key",
+    options: [
+      {
+        name: "link",
+        type: 3,
+        description: "The Evon link",
+        required: true,
+      },
+    ],
+  },
+  {
+    name: "keyrblx",
+    description: "Gets keyrblx Key",
+    options: [
+      {
+        name: "link",
+        type: 3,
+        description: "The keyrblx link",
+        required: true,
+      },
+    ],
+  },
+  /*
+    {
+      name: "fluxus",
+      description: "Gets fluxus Key (Beta)",
+      options: [
+        {
+          name: "link",
+          type: 3,
+          description: "The Get Fluxus link",
+          required: true,
+        },
+      ],
+    },
+    */
+  {
+    name: "linkvertise",
+    description: "Gets ad Link",
+    options: [
+      {
+        name: "link",
+        type: 3,
+        description: "The Get ad link",
+        required: true,
+      },
+    ],
+  },
+  {
+    name: "ping",
+    description: "Reply pong + Latency! ms",
+  },
+  /*
+  {
+    name: "status",
+    description: "Check support API",
+  },
+  */
+];
+
+client.once("ready", (client) => {
+  // client.user.setAvatar(`./imagebot.gif`);
+  (async () => {
+    try {
+      console.log(
+        "[Project Bypass] Started refreshing global application (/) commands."
+      );
+      await rest.put(Routes.applicationCommands(clientid), {
+        body: commands,
+      });
+
+      console.log(
+        "[Project Bypass] Successfully reloaded global application (/) commands."
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  })();
+
+  const statusMessages = [
+    "Join https://discord.com/invite/menoobgaming",
+    /*
+      "Tạo bởi Moroxi",
+      "The moon in the sky",
+      "Smile always winning",
+      "Moroxi is the best",
+      "Test Bot | Project by Seek Cat",
+      */
+  ];
+
+  function updateStatusAndSendMessages() {
+    let currentIndex = 0;
+    const currentStatus = statusMessages[currentIndex];
+    const nextStatus =
+      statusMessages[(currentIndex + 1) % statusMessages.length];
+    client.user.setPresence({
+      activities: [
+        {
+          name: currentStatus,
+          type: ActivityType.Custom,
+        },
+      ],
+      status: onlinestatus,
+    });
+    currentIndex = currentIndex + 1;
+  }
+
+  console.log(`${client.user.tag} has been running`);
+
+  updateStatusAndSendMessages();
+
+  setInterval(() => {
+    updateStatusAndSendMessages();
+  }, 5000);
+});
+
+client.on("interactionCreate", async (interaction) => {
+  if (!interaction.isCommand()) return;
+  if (interaction.commandName === "ping") {
+    const start = Date.now();
+    await interaction.reply({ content: "Pinging..." });
+
+    const latency = Date.now() - start;
+    await interaction.editReply(`Pong! Latency is ${latency}ms.`);
+  }
+  if (interaction.commandName === "arceus") {
+    await arceusx(interaction);
+    if (advertise == true) {
+      await interaction.followUp({ content: serverinvite, ephemeral: true });
+    } else {
+      return;
+    }
+  } else if (interaction.commandName === "codex") {
+    await codex(interaction);
+    if (advertise == true) {
+      await interaction.followUp({ content: serverinvite, ephemeral: true });
+    } else {
+      return;
+    }
+  } else if (interaction.commandName === "delta") {
+    await delta(interaction);
+    if (advertise == true) {
+      await interaction.followUp({ content: serverinvite, ephemeral: true });
+    } else {
+      return;
+    }
+  } else if (interaction.commandName === "hydrogen") {
+    await hydrogen(interaction);
+    if (advertise == true) {
+      await interaction.followUp({ content: serverinvite, ephemeral: true });
+    } else {
+      return;
+    }
+  } else if (interaction.commandName === "hohohub") {
+    await hohohub(interaction);
+    if (advertise == true) {
+      await interaction.followUp({ content: serverinvite, ephemeral: true });
+    } else {
+      return;
+    }
+  } else if (interaction.commandName === "trigon") {
+    await trigon(interaction);
+    if (advertise == true) {
+      await interaction.followUp({ content: serverinvite, ephemeral: true });
+    } else {
+      return;
+    }
+  } else if (interaction.commandName === "vegax") {
+    await vegax(interaction);
+    if (advertise == true) {
+      await interaction.followUp({ content: serverinvite, ephemeral: true });
+    } else {
+      return;
+    }
+  } else if (interaction.commandName === "valyse") {
+    await valyse(interaction);
+    if (advertise == true) {
+      await interaction.followUp({ content: serverinvite, ephemeral: true });
+    } else {
+      return;
+    }
+  } else if (interaction.commandName === "evon") {
+    await evon(interaction);
+    if (advertise == true) {
+      await interaction.followUp({ content: serverinvite, ephemeral: true });
+    } else {
+      return;
+    }
+  } else if (interaction.commandName === "keyrblx") {
+    await keyrblx(interaction);
+    if (advertise == true) {
+      await interaction.followUp({ content: serverinvite, ephemeral: true });
+    } else {
+      return;
+    }
+  } else if (interaction.commandName === "linkvertise") {
+    await linkvertise(interaction);
+    if (advertise == true) {
+      await interaction.followUp({ content: serverinvite, ephemeral: true });
+    } else {
+      return;
+    }
+  }
+  /*
+  else if (interaction.commandName === "status") {
+    await status(interaction);
+    if (advertise == true) {
+      await interaction.followUp({ content: serverinvite, ephemeral: true });
+    } else {
+      return;
+    }
+  }
+  */
+  /*
+    else if (interaction.commandName === "fluxus") {
+      await fluxus(interaction);
+      if (advertise == true) {
+        await interaction.followUp({ content: serverinvite, ephemeral: true });
+      } else {
+        return;
+      }
+    }
+    */
+});
+/*
+  async function fluxus(interaction) {
+    const guild = interaction.guild;
+  
+    if (!guild) {
+      await interaction.reply("Unknown server ...");
+      return;
+    }
+  
+    const allowedOwnerIds = ["725607271945732157", "1141643603375034428"];
+    const isOwner = allowedOwnerIds.includes(interaction.user.id);
+  
+    if (!isOwner) {
+      await interaction.reply("You don't have permission to use this.");
+      return;
+    }
+  
+    const link = interaction.options.getString("link");
+  
+    if (
+      link.startsWith(
+        "https://keysystem.fluxteam.net/android/checkpoint/start.php?HWID="
+      )
+    ) {
+      const { Resolver } = require("dns");
+      const gethwid = link.match(/\?HWID=([^&]*)/)[1];
+      const resolver = new Resolver();
+      resolver.setServers(["193.84.88.132"]);
+  
+      axios.interceptors.request.use(async (config) => {
+        const hostname = new URL(config.url).hostname;
+        try {
+          const addresses = resolver.resolve(hostname);
+          const ipAddress = addresses[0];
+          config.url = config.url.replace(hostname, ipAddress);
+          return config;
+        } catch (error) {
+          console.error("DNS resolution error:", error);
+          return Promise.reject(error);
+        }
+      });
+  
+      async function handler(...args) {
+        let config = { headers: args[1] };
+        try {
+          const res = await axios.get(args[0], config);
+          return res;
+        } catch (error) {
+          console.log(error);
+          return null;
+        }
+      }
+  
+      async function request(...args) {
+        return await handler(...args);
+      }
+  
+      try {
+        console.log("Starting bypass");
+        await request(link, {
+          Referer: "https://keysystem.fluxteam.net/android/checkpoint/start.php",
+        });
+        await wait(3);
+        await request(
+          `https://keysystem.fluxteam.net/android/checkpoint/start.php?HWID=${gethwid}`,
+          {
+            Referer: link,
+            Cookie: commoncookie,
+          }
+        );
+        await wait(1);
+        await interaction.editReply({
+          embeds: [
+            {
+              title: "Bypassed Checkpoint 1...",
+              fields: [
+                {
+                  name: "Status",
+                  value: `Bypass success checkpoint 1 has final checkpoint left`,
+                },
+              ],
+            },
+          ],
+        });
+  
+        await request(
+          `https://fluxteam.net/android/checkpoint/check1.php`,
+          commonheader
+        );
+        await wait(1);
+        await interaction.editReply({
+          embeds: [
+            {
+              title: "Bypassed Checkpoint Final...",
+              fields: [
+                { name: "Status", value: `Bypass success checkpoint final` },
+              ],
+            },
+          ],
+        });
+  
+        await request(
+          `https://fluxteam.net/android/checkpoint/main.php`,
+          commonheader
+        );
+  
+        const parsed = cheerio.load(response["data"]);
+        const key = parsed("body > main > code:nth-child(5)")
+          .text()
+          .replace(/\s+/g, "");
+        await interaction.editReply({
+          embeds: [
+            {
+              title: "Successfully Getkey Fluxus",
+              thumbnail: {
+                url: "https://cdn.discordapp.com/attachments/1222430999552589865/1226555857698033784/8GYa7KA.png?ex=66253228&is=6612bd28&hm=a0729b7e07d396431ad25da43ebfcb9bfd727e1891bec863a525eef1a36e7df2&",
+              },
+              fields: [
+                {
+                  name: "Status:",
+                  value: `${box}${key}${box}`,
+                },
+                { name: "HWID:", value: `${box}${gethwid}${box}` },
+                { name: "Time Taken:", value: `${box}${time} Seconds${box}` },
+                {
+                  name: "Invalid Whitelist:",
+                  value: `You have ${discordTimestamp} to end Whitelist`,
+                },
+              ],
+              footer: {
+                text: `Requested By ${interaction.user.username} | Tạo bởi ${madeby}`,
+              },
+            },
+          ],
+        });
+      } catch (err) {
+        console.log(err);
+        await interaction.editReply({
+          embeds: [
+            {
+              title: "Failed get key Fluxus",
+              thumbnail: {
+                url: "https://cdn.discordapp.com/attachments/1222430999552589865/1226555857698033784/8GYa7KA.png?ex=66253228&is=6612bd28&hm=a0729b7e07d396431ad25da43ebfcb9bfd727e1891bec863a525eef1a36e7df2&",
+              },
+              fields: [
+                {
+                  name: "Status:",
+                  value: "The link is not installed host, please install host",
+                },
+                { name: "HWID:", value: `${box}${gethwid}${box}` },
+                {
+                  name: "Fix:",
+                  value: `https://discord.com/channels/1202555259835383838/1211905662406369280/1214067360294637590`,
+                },
+              ],
+              footer: {
+                text: `Requested By ${interaction.user.username} | Tạo bởi ${madeby}`,
+              },
+            },
+          ],
+        });
+      }
+    }
+  }
+  */
+async function arceusx(interaction) {
+  const link = interaction.options.getString("link");
+  const box = "```";
+  await interaction.reply({
+    embeds: [
+      {
+        title: "Whitelisting Your Arceus",
+        thumbnail: {
+          url: "https://cdn.discordapp.com/icons/991702878257422347/a_08fcd14478786b238ceee69c3958d2fa.gif?size=4096",
+        },
+        fields: [{ name: "Status", value: "```May take a while...```" }],
+      },
+    ],
+  });
+  if (
+    link.startsWith(
+      "https://spdmteam.com/key-system-1?hwid=" ||
+        "https://spdmteam.com/key-system-2?hwid=" ||
+        "https://spdmteam.com/key-system-3?hwid="
+    )
+  ) {
+    const hwid = link.split("=")[1].split("&")[0];
+    const apiUrl = `https://selected-physically-sunbeam.ngrok-free.app/?url=${link}&api_key=${apikeyshoukohub}`;
+
+    try {
+      const start = Date.now();
+      const response = await axios.get(apiUrl);
+      const end = Date.now();
+      const time = (end - start) / 1000;
+
+      function calculateSecondsLeft(hours) {
+        const millisecondsInHour = 3600000; // 1 giờ = 3600000 milliseconds
+        return hours * 3600; // 1 hours = 3600 milliseconds
+      }
+
+      const hours = 24;
+      const remainingSeconds = calculateSecondsLeft(hours);
+
+      const currentTime = Math.floor(Date.now() / 1000);
+      const targetTime = currentTime + remainingSeconds;
+
+      const discordTimestamp = `<t:${targetTime}:R>`;
+
+      if (response.data.result === "Whitelisted!") {
+        await interaction.editReply({
+          embeds: [
+            {
+              title: "Successfully Whitelisted Arceus",
+              thumbnail: {
+                url: "https://cdn.discordapp.com/icons/991702878257422347/a_08fcd14478786b238ceee69c3958d2fa.gif?size=4096",
+              },
+              fields: [
+                {
+                  name: "Status:",
+                  value:
+                    "```Succesfully Whitelisted. Please Wait For Countdown Or Restart Roblox.```",
+                },
+                { name: "HWID:", value: `${box}${hwid}${box}` },
+                { name: "Time Taken:", value: `${box}${time} Seconds${box}` },
+                {
+                  name: "Invalid Whitelist:",
+                  value: `You has ${discordTimestamp} to end Whitelist`,
+                },
+              ],
+              footer: {
+                text: `Requested By ${interaction.user.username} | Tạo bởi ${madeby}`,
+              },
+            },
+          ],
+        });
+      } else {
+        await interaction.editReply({
+          embeds: [
+            {
+              title: "Failed To Whitelisted Arceus",
+              thumbnail: {
+                url: "https://cdn.discordapp.com/icons/991702878257422347/a_08fcd14478786b238ceee69c3958d2fa.gif?size=4096",
+              },
+              fields: [
+                {
+                  name: "Status:",
+                  value: "```Either Hwid Is Invalid Or Api Is Not Working.```",
+                },
+                { name: "HWID:", value: `${box}${hwid}${box}` },
+              ],
+              footer: {
+                text: `Requested By ${interaction.user.username} | Tạo bởi ${madeby}`,
+              },
+            },
+          ],
+        });
+      }
+    } catch (error) {
+      console.log(error);
+      await interaction.editReply({
+        embeds: [
+          {
+            title: "Failed To Whitelisted Arceus",
+            thumbnail: {
+              url: "https://cdn.discordapp.com/icons/991702878257422347/a_08fcd14478786b238ceee69c3958d2fa.gif?size=4096",
+            },
+            fields: [
+              {
+                name: "Status:",
+                value: "```Either Api Is Ofline Or Not Responding.```",
+              },
+            ],
+            footer: {
+              text: `Requested By ${interaction.user.username} | Tạo bởi ${madeby}`,
+            },
+          },
+        ],
+      });
+    }
+  } else {
+    await interaction.editReply({
+      embeds: [
+        {
+          title: "Invalid Arceus Link",
+          fields: [{ name: "Link", value: `${box}${link}${box}` }],
+        },
+      ],
+    });
+  }
+}
+
+async function codex(interaction) {
+  /*
+    const guild = interaction.guild;
+  
+    if (guild) {
+      const allowedOwnerIds = ["725607271945732157", "1141643603375034428"];
+      const isOwner = allowedOwnerIds.includes(interaction.user.id);
+      if (!isOwner) {
+        await interaction.reply("Bạn không có quyền truy cập vào chức năng này.");
+        return;
+      }
+    } else {
+      await interaction.reply("Không thể xác định được server.");
+      return;
+    }
+  */
+  const link = interaction.options.getString("link");
+  const box = "```";
+
+  await interaction.reply({
+    embeds: [
+      {
+        title: "Whitelisting Your Codex",
+        thumbnail: {
+          url: "https://cdn.discordapp.com/attachments/1222430999552589865/1226397532377190520/fq558f0.png?ex=66249eb5&is=661229b5&hm=7c3142db573ef29b68a973a32bda707a1db5f8a623dcd7bea1814c64bad729f9&",
+        },
+        fields: [{ name: "Status", value: "```May take a while...```" }],
+      },
+    ],
+  });
+  const tablelinks = [
+    "https://mobile.codex.lol/token",
+    "https://mobile.codex.lol/?token",
+  ];
+
+  if (tablelinks.some((prefix) => link.startsWith(prefix))) {
+    const regex = /\?token=([^&]+)/;
+    const token = link.match(regex);
+    const apiUrl = `https://selected-physically-sunbeam.ngrok-free.app/?url=${link}&api_key=${apikeyshoukohub}`;
+    try {
+      const start = Date.now();
+      const response = await axios.get(apiUrl);
+      const end = Date.now();
+      const time = (end - start) / 1000;
+
+      function calculateSecondsLeft(hours) {
+        const millisecondsInHour = 3600000; // 1 hours = 3600000 milliseconds
+        return hours * 3600; // 1 hours = 3600 milliseconds
+      }
+
+      const hours = 24;
+      const remainingSeconds = calculateSecondsLeft(hours);
+
+      const currentTime = Math.floor(Date.now() / 1000);
+      const targetTime = currentTime + remainingSeconds;
+
+      const discordTimestamp = `<t:${targetTime}:R>`;
+      if (response.data.key === "Whitelisted!") {
+        await interaction.editReply({
+          embeds: [
+            {
+              title: "Successfully Whitelisted Codex",
+              thumbnail: {
+                url: "https://cdn.discordapp.com/attachments/1222430999552589865/1226397532377190520/fq558f0.png?ex=66249eb5&is=661229b5&hm=7c3142db573ef29b68a973a32bda707a1db5f8a623dcd7bea1814c64bad729f9&",
+              },
+              fields: [
+                {
+                  name: "Status:",
+                  value:
+                    "```Succesfully Whitelisted. Wait Up To A Minute Or Restart Roblox.```",
+                },
+                { name: "Token:", value: `${box}${token}${box}` },
+                { name: "Time Taken:", value: `${box}${time} Seconds${box}` },
+                {
+                  name: "Invalid Whitelist:",
+                  value: `You has ${discordTimestamp} to end Whitelist`,
+                },
+              ],
+              footer: {
+                text: `Requested By ${interaction.user.username} | Tạo bởi ${madeby}`,
+              },
+            },
+          ],
+        });
+      } else {
+        await interaction.editReply({
+          embeds: [
+            {
+              title: "Failed To Whitelisted Codex",
+              thumbnail: {
+                url: "https://cdn.discordapp.com/attachments/1222430999552589865/1226397532377190520/fq558f0.png?ex=66249eb5&is=661229b5&hm=7c3142db573ef29b68a973a32bda707a1db5f8a623dcd7bea1814c64bad729f9&",
+              },
+              fields: [
+                {
+                  name: "Status:",
+                  value: "```Either Token Is Invalid Or Api Is Not Working.```",
+                },
+                { name: "Token:", value: `${box}${token}${box}` },
+              ],
+              footer: {
+                text: `Requested By ${interaction.user.username} | Tạo bởi ${madeby}`,
+              },
+            },
+          ],
+        });
+      }
+    } catch (error) {
+      console.log(error);
+      await interaction.editReply({
+        embeds: [
+          {
+            title: "Failed To Get Codex key",
+            thumbnail: {
+              url: "https://cdn.discordapp.com/icons/978632997425283092/5b0da04e7829e1280ca274a2da8531fe.webp?size=4096",
+            },
+            fields: [
+              {
+                name: "Status:",
+                value: "```Either Api Is Ofline Or Not Responding.```",
+              },
+            ],
+            footer: {
+              text: `Requested By ${interaction.user.username} | Tạo bởi ${madeby}`,
+            },
+          },
+        ],
+      });
+    }
+  } else {
+    await interaction.editReply({
+      embeds: [
+        {
+          title: "Invalid Codex Link",
+          fields: [{ name: "Link", value: `${box}${link}${box}` }],
+        },
+      ],
+    });
+  }
+}
+async function delta(interaction) {
+  const link = interaction.options.getString("link");
+  const box = "```";
+
+  await interaction.reply({
+    embeds: [
+      {
+        title: "Getting Delta Key",
+        thumbnail: {
+          url: "https://cdn.discordapp.com/icons/1221935816515911850/1329f2afd94d080475ba6d6ebd7dadb2.webp?size=4096",
+        },
+        fields: [{ name: "Status", value: "```May take a while...```" }],
+      },
+    ],
+  });
+
+  if (link.startsWith("https://gateway.platoboost.com/a/8?id=")) {
+    const idValue = link.split("id=")[1];
+    const apiUrl = `https://selected-physically-sunbeam.ngrok-free.app/?url=${link}&api_key=${apikeyshoukohub}`;
+    try {
+      const start = Date.now();
+      /*
+      const response = await axios.get(apiUrl, {
+        headers: {
+          Authorization: "Bearer BQb1BPFajr9MtRt",
+        },
+      });
+      */
+      const response = await axios.get(apiUrl);
+      const end = Date.now();
+      const time = (end - start) / 1000;
+      const getresponseurl = response.data;
+      function calculateSecondsLeft(hours) {
+        const millisecondsInHour = 3600000; // 1 hours = 3600000 milliseconds
+        return hours * 3600; // 1 hours = 3600 milliseconds
+      }
+
+      const hours = 24;
+      const remainingSeconds = calculateSecondsLeft(hours);
+
+      const currentTime = Math.floor(Date.now() / 1000);
+      const targetTime = currentTime + remainingSeconds;
+
+      const discordTimestamp = `<t:${targetTime}:R>`;
+
+      if (getresponseurl.result) {
+        await interaction.editReply({
+          embeds: [
+            {
+              title: "Successfully Got Delta Key",
+              thumbnail: {
+                url: "https://cdn.discordapp.com/icons/1221935816515911850/1329f2afd94d080475ba6d6ebd7dadb2.webp?size=4096",
+              },
+              fields: [
+                {
+                  name: "Status:",
+                  value: `${box}${getresponseurl.result}${box}`,
+                },
+                { name: "ID:", value: `${box}${idValue}${box}` },
+                { name: "Time Taken:", value: `${box}${time} Seconds${box}` },
+                {
+                  name: "Invalid Whitelist:",
+                  value: `You has ${discordTimestamp} to end Whitelist Key`,
+                },
+              ],
+              footer: {
+                text: `Requested By ${interaction.user.username} | Tạo bởi ${madeby}`,
+              },
+            },
+          ],
+        });
+      } else {
+        await interaction.editReply({
+          embeds: [
+            {
+              title: "Failed To Get Delta Key",
+              thumbnail: {
+                url: "https://cdn.discordapp.com/icons/1221935816515911850/1329f2afd94d080475ba6d6ebd7dadb2.webp?size=4096",
+              },
+              fields: [
+                {
+                  name: "Status:",
+                  value: "```Either Hwid Is Invalid Or Api Is Not Working.```",
+                },
+                { name: "ID:", value: `${box}${idValue}${box}` },
+              ],
+              footer: {
+                text: `Requested By ${interaction.user.username} | Tạo bởi ${madeby}`,
+              },
+            },
+          ],
+        });
+      }
+    } catch (error) {
+      console.log(error);
+      await interaction.editReply({
+        embeds: [
+          {
+            title: "Failed To Get Delta key",
+            thumbnail: {
+              url: "https://cdn.discordapp.com/icons/1221935816515911850/1329f2afd94d080475ba6d6ebd7dadb2.webp?size=4096",
+            },
+            fields: [
+              {
+                name: "Status:",
+                value: "```Either Api Is Ofline Or Not Responding.```",
+              },
+              {
+                name: "ID:",
+                value: `${box}${idValue}${box}`,
+              },
+            ],
+            footer: {
+              text: `Requested By ${interaction.user.username} | Tạo bởi ${madeby}`,
+            },
+          },
+        ],
+      });
+    }
+  } else {
+    await interaction.editReply({
+      embeds: [
+        {
+          title: "Invalid Delta Link",
+          fields: [{ name: "Link", value: `${box}${link}${box}` }],
+        },
+      ],
+    });
+  }
+}
+
+async function hydrogen(interaction) {
+  const link = interaction.options.getString("link");
+  const box = "```";
+
+  await interaction.reply({
+    embeds: [
+      {
+        title: "Getting Hydrogen Key",
+        thumbnail: {
+          url: "https://cdn.discordapp.com/icons/924722337981530132/73e6c24fec92005c5521b58bcd8c9e5d.webp?size=4096",
+        },
+        fields: [{ name: "Status", value: "```May take a while...```" }],
+      },
+    ],
+  });
+
+  if (link.startsWith("https://gateway.platoboost.com/a/2569?id=")) {
+    const urlParams = new URLSearchParams(new URL(link).search);
+    const hwid = urlParams.get("id");
+    const apiUrl = `https://selected-physically-sunbeam.ngrok-free.app/?url=${link}&api_key=${apikeyshoukohub}`;
+
+    try {
+      const start = Date.now();
+      const response = await axios.get(apiUrl);
+      const end = Date.now();
+      const time = (end - start) / 1000;
+      function calculateSecondsLeft(hours) {
+        const millisecondsInHour = 3600000; // 1 hours = 3600000 milliseconds
+        return hours * 3600; // 1 hours = 3600 milliseconds
+      }
+
+      const hours = 24;
+      const remainingSeconds = calculateSecondsLeft(hours);
+
+      const currentTime = Math.floor(Date.now() / 1000);
+      const targetTime = currentTime + remainingSeconds;
+
+      const discordTimestamp = `<t:${targetTime}:R>`;
+
+      if (response.data.result) {
+        await interaction.editReply({
+          embeds: [
+            {
+              title: "Successfully Got Hydrogen Key",
+              thumbnail: {
+                url: "https://cdn.discordapp.com/icons/924722337981530132/73e6c24fec92005c5521b58bcd8c9e5d.webp?size=4096",
+              },
+              fields: [
+                {
+                  name: "Status:",
+                  value: `${box}${response.data.result}${box}`,
+                },
+                { name: "HWID:", value: `${box}${hwid}${box}` },
+                { name: "Time Taken:", value: `${box}${time} Seconds${box}` },
+                {
+                  name: "Invalid Whitelist:",
+                  value: `You has ${discordTimestamp} to end Whitelist Key`,
+                },
+              ],
+              footer: {
+                text: `Requested By ${interaction.user.username} | Tạo bởi ${madeby}`,
+              },
+            },
+          ],
+        });
+      } else {
+        await interaction.editReply({
+          embeds: [
+            {
+              title: "Failed To Get Hydrogen Key",
+              thumbnail: {
+                url: "https://cdn.discordapp.com/icons/924722337981530132/73e6c24fec92005c5521b58bcd8c9e5d.webp?size=4096",
+              },
+              fields: [
+                {
+                  name: "Status:",
+                  value: "```Either Hwid Is Invalid Or Api Is Not Working.```",
+                },
+                { name: "HWID:", value: `${box}${hwid}${box}` },
+              ],
+              footer: {
+                text: `Requested By ${interaction.user.username} | Tạo bởi ${madeby}`,
+              },
+            },
+          ],
+        });
+      }
+    } catch (error) {
+      console.log(error);
+      await interaction.editReply({
+        embeds: [
+          {
+            title: "Failed To Get Hydrogen key",
+            thumbnail: {
+              url: "https://cdn.discordapp.com/icons/924722337981530132/73e6c24fec92005c5521b58bcd8c9e5d.webp?size=4096",
+            },
+            fields: [
+              {
+                name: "Status:",
+                value: "```Either Api Is Ofline Or Not Responding.```",
+              },
+            ],
+            footer: {
+              text: `Requested By ${interaction.user.username} | Tạo bởi ${madeby}`,
+            },
+          },
+        ],
+      });
+    }
+  } else {
+    await interaction.editReply({
+      embeds: [
+        {
+          title: "Invalid Hydrogen Link",
+          fields: [{ name: "Link", value: `${box}${link}${box}` }],
+        },
+      ],
+    });
+  }
+}
+
+async function hohohub(interaction) {
+  const link = interaction.options.getString("link");
+  const box = "```";
+
+  await interaction.reply({
+    embeds: [
+      {
+        title: "Getting HoHoHub Key",
+        thumbnail: {
+          url: "https://cdn.discordapp.com/icons/906426036772818954/a_af386a2a26dc547f5c800015796a57f5.gif?size=4096",
+        },
+        fields: [{ name: "Status", value: "```May take a while...```" }],
+      },
+    ],
+  });
+
+  if (
+    link.startsWith(
+      "https://hohohubv-ac90f67762c4.herokuapp.com/api/getkeyv2?hwid="
+    )
+  ) {
+    const urlParams = new URLSearchParams(new URL(link).search);
+    const hwid = urlParams.get("hwid");
+    const apiUrl = `https://selected-physically-sunbeam.ngrok-free.app/?url=${link}&api_key=${apikeyshoukohub}`;
+
+    try {
+      const start = Date.now();
+      const response = await axios.get(apiUrl);
+      const end = Date.now();
+      const time = (end - start) / 1000;
+      function calculateSecondsLeft(hours) {
+        const millisecondsInHour = 3600000; // 1 hours = 3600000 milliseconds
+        return hours * 3600; // 1 hours = 3600 milliseconds
+      }
+
+      const hours = 24;
+      const remainingSeconds = calculateSecondsLeft(hours);
+
+      const currentTime = Math.floor(Date.now() / 1000);
+      const targetTime = currentTime + remainingSeconds;
+
+      const discordTimestamp = `<t:${targetTime}:R>`;
+      if (response.data.result) {
+        await interaction.editReply({
+          embeds: [
+            {
+              title: "Successfully Got HoHoHub Key",
+              thumbnail: {
+                url: "https://cdn.discordapp.com/icons/906426036772818954/a_af386a2a26dc547f5c800015796a57f5.gif?size=4096",
+              },
+              fields: [
+                {
+                  name: "Status:",
+                  value: `${box}${response.data.result}${box}`,
+                },
+                { name: "HWID:", value: `${box}${hwid}${box}` },
+                { name: "Time Taken:", value: `${box}${time} Seconds${box}` },
+                {
+                  name: "Invalid Whitelist:",
+                  value: `You has ${discordTimestamp} to end Whitelist`,
+                },
+              ],
+              footer: {
+                text: `Requested By ${interaction.user.username} | Tạo bởi ${madeby}`,
+              },
+            },
+          ],
+        });
+      } else {
+        await interaction.editReply({
+          embeds: [
+            {
+              title: "Failed To Get HoHoHub Key",
+              thumbnail: {
+                url: "https://cdn.discordapp.com/icons/906426036772818954/a_af386a2a26dc547f5c800015796a57f5.gif?size=4096",
+              },
+              fields: [
+                {
+                  name: "Status:",
+                  value: "```Either Hwid Is Invalid Or Api Is Not Working.```",
+                },
+                { name: "HWID:", value: `${box}${hwid}${box}` },
+              ],
+              footer: {
+                text: `Requested By ${interaction.user.username} | Tạo bởi ${madeby}`,
+              },
+            },
+          ],
+        });
+      }
+    } catch (error) {
+      console.log(error);
+      await interaction.editReply({
+        embeds: [
+          {
+            title: "Failed To Get HoHoHub key",
+            thumbnail: {
+              url: "https://cdn.discordapp.com/icons/906426036772818954/a_af386a2a26dc547f5c800015796a57f5.gif?size=4096",
+            },
+            fields: [
+              {
+                name: "Status:",
+                value: "```Either Api Is Ofline Or Not Responding.```",
+              },
+            ],
+            footer: {
+              text: `Requested By ${interaction.user.username} | Tạo bởi ${madeby}`,
+            },
+          },
+        ],
+      });
+    }
+  } else {
+    await interaction.editReply({
+      embeds: [
+        {
+          title: "Invalid HoHoHub Link",
+          fields: [{ name: "Link", value: `${box}${link}${box}` }],
+        },
+      ],
+    });
+  }
+}
+
+async function trigon(interaction) {
+  const link = interaction.options.getString("link");
+  const box = "```";
+
+  await interaction.reply({
+    embeds: [
+      {
+        title: "Getting Trigon Key",
+        thumbnail: {
+          url: "https://cdn.discordapp.com/icons/885557332623384627/ff86d7e2abc20f66fbc68eaabd2240ab.webp?size=4096",
+        },
+        fields: [{ name: "Status", value: "```May take a while...```" }],
+      },
+    ],
+  });
+
+  if (link.startsWith("https://trigonevo.com/getkey/?hwid=")) {
+    const urlParams = new URLSearchParams(new URL(link).search);
+    const hwid = urlParams.get("hwid");
+    const apiUrl = `https://stickx.top/api-trigon/?hwid=${hwid}&api_key=${apikey}`;
+
+    try {
+      const start = Date.now();
+      const response = await axios.get(apiUrl);
+      const end = Date.now();
+      const time = (end - start) / 1000;
+      function calculateSecondsLeft(hours) {
+        const millisecondsInHour = 3600000; // 1 hours = 3600000 milliseconds
+        return hours * 3600; // 1 hours = 3600 milliseconds
+      }
+
+      const hours = 24;
+      const remainingSeconds = calculateSecondsLeft(hours);
+
+      const currentTime = Math.floor(Date.now() / 1000);
+      const targetTime = currentTime + remainingSeconds;
+
+      const discordTimestamp = `<t:${targetTime}:R>`;
+      if (response.data.key) {
+        await interaction.editReply({
+          embeds: [
+            {
+              title: "Successfully Got Trigon Key",
+              thumbnail: {
+                url: "https://cdn.discordapp.com/icons/885557332623384627/ff86d7e2abc20f66fbc68eaabd2240ab.webp?size=4096",
+              },
+              fields: [
+                {
+                  name: "Status:",
+                  value: `${box}${response.data.key}${box}`,
+                },
+                { name: "HWID:", value: `${box}${hwid}${box}` },
+                { name: "Time Taken:", value: `${box}${time} Seconds${box}` },
+                {
+                  name: "Invalid Whitelist:",
+                  value: `You has ${discordTimestamp} to end Whitelist`,
+                },
+              ],
+              footer: {
+                text: `Requested By ${interaction.user.username} | Tạo bởi ${madeby}`,
+              },
+            },
+          ],
+        });
+      } else {
+        await interaction.editReply({
+          embeds: [
+            {
+              title: "Failed To Get Trigon Key",
+              thumbnail: {
+                url: "https://cdn.discordapp.com/icons/885557332623384627/ff86d7e2abc20f66fbc68eaabd2240ab.webp?size=4096",
+              },
+              fields: [
+                {
+                  name: "Status:",
+                  value: "```Either Hwid Is Invalid Or Api Is Not Working.```",
+                },
+                { name: "HWID:", value: `${box}${hwid}${box}` },
+              ],
+              footer: {
+                text: `Requested By ${interaction.user.username} | Tạo bởi ${madeby}`,
+              },
+            },
+          ],
+        });
+      }
+    } catch (error) {
+      console.log(error);
+      await interaction.editReply({
+        embeds: [
+          {
+            title: "Failed To Get Trigon key",
+            thumbnail: {
+              url: "https://cdn.discordapp.com/icons/885557332623384627/ff86d7e2abc20f66fbc68eaabd2240ab.webp?size=4096",
+            },
+            fields: [
+              {
+                name: "Status:",
+                value: "```Either Api Is Ofline Or Not Responding.```",
+              },
+            ],
+            footer: {
+              text: `Requested By ${interaction.user.username} | Tạo bởi ${madeby}`,
+            },
+          },
+        ],
+      });
+    }
+  } else {
+    await interaction.editReply({
+      embeds: [
+        {
+          title: "Invalid Trigon Link",
+          fields: [{ name: "Link", value: `${box}${link}${box}` }],
+        },
+      ],
+    });
+  }
+}
+
+async function vegax(interaction) {
+  const link = interaction.options.getString("link");
+  const box = "```";
+
+  await interaction.reply({
+    embeds: [
+      {
+        title: "Getting VegaX Key",
+        thumbnail: {
+          url: "https://cdn.discordapp.com/icons/1069840556307525772/171f26212614573132d52c97c565182a.webp?size=4096",
+        },
+        fields: [{ name: "Status", value: "```May take a while...```" }],
+      },
+    ],
+  });
+
+  if (
+    link.startsWith("https://pandadevelopment.net/getkey?service=vegax&hwid=")
+  ) {
+    const urlParams = new URLSearchParams(new URL(link).search);
+    const hwid = urlParams.get("hwid");
+    const apiUrl = `https://stickx.top/api-vegax/?hwid=${hwid}&api_key=${apikey}`;
+
+    try {
+      const start = Date.now();
+      const response = await axios.get(apiUrl);
+      const end = Date.now();
+      const time = (end - start) / 1000;
+      function calculateSecondsLeft(hours) {
+        const millisecondsInHour = 3600000; // 1 hours = 3600000 milliseconds
+        return hours * 3600; // 1 hours = 3600 milliseconds
+      }
+
+      const hours = 24;
+      const remainingSeconds = calculateSecondsLeft(hours);
+
+      const currentTime = Math.floor(Date.now() / 1000);
+      const targetTime = currentTime + remainingSeconds;
+
+      const discordTimestamp = `<t:${targetTime}:R>`;
+      if (response.data.key) {
+        await interaction.editReply({
+          embeds: [
+            {
+              title: "Successfully Got VegaX Key",
+              thumbnail: {
+                url: "https://cdn.discordapp.com/icons/1069840556307525772/171f26212614573132d52c97c565182a.webp?size=4096",
+              },
+              fields: [
+                {
+                  name: "Status:",
+                  value: `${box}${response.data.key}${box}`,
+                },
+                { name: "HWID:", value: `${box}${hwid}${box}` },
+                { name: "Time Taken:", value: `${box}${time} Seconds${box}` },
+                {
+                  name: "Invalid Whitelist:",
+                  value: `You has ${discordTimestamp} to end Whitelist`,
+                },
+              ],
+              footer: {
+                text: `Requested By ${interaction.user.username} | Tạo bởi ${madeby}`,
+              },
+            },
+          ],
+        });
+      } else {
+        await interaction.editReply({
+          embeds: [
+            {
+              title: "Failed To Get VegaX Key",
+              thumbnail: {
+                url: "https://cdn.discordapp.com/icons/1069840556307525772/171f26212614573132d52c97c565182a.webp?size=4096",
+              },
+              fields: [
+                {
+                  name: "Status:",
+                  value: "```Either Hwid Is Invalid Or Api Is Not Working.```",
+                },
+                { name: "HWID:", value: `${box}${hwid}${box}` },
+              ],
+              footer: {
+                text: `Requested By ${interaction.user.username} | Tạo bởi ${madeby}`,
+              },
+            },
+          ],
+        });
+      }
+    } catch (error) {
+      console.log(error);
+      await interaction.editReply({
+        embeds: [
+          {
+            title: "Failed To Get VegaX key",
+            thumbnail: {
+              url: "https://cdn.discordapp.com/icons/1069840556307525772/171f26212614573132d52c97c565182a.webp?size=4096",
+            },
+            fields: [
+              {
+                name: "Status:",
+                value: "```Either Api Is Ofline Or Not Responding.```",
+              },
+            ],
+            footer: {
+              text: `Requested By ${interaction.user.username} | Tạo bởi ${madeby}`,
+            },
+          },
+        ],
+      });
+    }
+  } else {
+    await interaction.editReply({
+      embeds: [
+        {
+          title: "Invalid VegaX Link",
+          fields: [{ name: "Link", value: `${box}${link}${box}` }],
+        },
+      ],
+    });
+  }
+}
+
+async function valyse(interaction) {
+  const link = interaction.options.getString("link");
+  const box = "```";
+
+  await interaction.reply({
+    embeds: [
+      {
+        title: "Getting Whitelist Valyse",
+        thumbnail: {
+          url: "https://cdn.discordapp.com/attachments/1222430999552589865/1226205797344608366/Kd8dZ21.png?ex=6623ec23&is=66117723&hm=618606994b544a64d6425fb0bc4e2cd062298c991c1c88e67256481a27bfd1ff&",
+        },
+        fields: [{ name: "Status", value: "```May take a while...```" }],
+      },
+    ],
+  });
+
+  if (link.startsWith("https://valyse.best/verification?device_id=")) {
+    const urlParams = new URLSearchParams(new URL(link).search);
+    const deviceid = urlParams.get("device_id");
+    const apiUrl = `https://stickx.top/api-valyse/?device_id=${deviceid}&api_key=${apikey}`;
+
+    try {
+      const start = Date.now();
+      const response = await axios.get(apiUrl);
+      const end = Date.now();
+      const time = (end - start) / 1000;
+      function calculateSecondsLeft(hours) {
+        const millisecondsInHour = 3600000; // 1 hours = 3600000 milliseconds
+        return hours * 3600; // 1 hours = 3600 milliseconds
+      }
+
+      const hours = 12;
+      const remainingSeconds = calculateSecondsLeft(hours);
+
+      const currentTime = Math.floor(Date.now() / 1000);
+      const targetTime = currentTime + remainingSeconds;
+
+      const discordTimestamp = `<t:${targetTime}:R>`;
+      if (response.data.key) {
+        await interaction.editReply({
+          embeds: [
+            {
+              title: "Successfully Got Valyse Whitelist ",
+              thumbnail: {
+                url: "https://cdn.discordapp.com/attachments/1222430999552589865/1226205797344608366/Kd8dZ21.png?ex=6623ec23&is=66117723&hm=618606994b544a64d6425fb0bc4e2cd062298c991c1c88e67256481a27bfd1ff&",
+              },
+              fields: [
+                {
+                  name: "Status:",
+                  value: `${box}${response.data.key}${box}`,
+                },
+                { name: "ID:", value: `${box}${deviceid}${box}` },
+                { name: "Time Taken:", value: `${box}${time} Seconds${box}` },
+                {
+                  name: "Invalid Whitelist:",
+                  value: `You has ${discordTimestamp} to end Whitelist`,
+                },
+              ],
+              footer: {
+                text: `Requested By ${interaction.user.username} | Tạo bởi ${madeby}`,
+              },
+            },
+          ],
+        });
+      } else {
+        await interaction.editReply({
+          embeds: [
+            {
+              title: "Failed To Get Valyse Whitelist",
+              thumbnail: {
+                url: "https://cdn.discordapp.com/attachments/1222430999552589865/1226205797344608366/Kd8dZ21.png?ex=6623ec23&is=66117723&hm=618606994b544a64d6425fb0bc4e2cd062298c991c1c88e67256481a27bfd1ff&",
+              },
+              fields: [
+                {
+                  name: "Status:",
+                  value: "```Either Hwid Is Invalid Or Api Is Not Working.```",
+                },
+                { name: "ID:", value: `${box}${deviceid}${box}` },
+              ],
+              footer: {
+                text: `Requested By ${interaction.user.username} | Tạo bởi ${madeby}`,
+              },
+            },
+          ],
+        });
+      }
+    } catch (error) {
+      console.log(error);
+      await interaction.editReply({
+        embeds: [
+          {
+            title: "Failed To Get Valyse Whitelist",
+            thumbnail: {
+              url: "https://cdn.discordapp.com/attachments/1222430999552589865/1226205797344608366/Kd8dZ21.png?ex=6623ec23&is=66117723&hm=618606994b544a64d6425fb0bc4e2cd062298c991c1c88e67256481a27bfd1ff&",
+            },
+            fields: [
+              {
+                name: "Status:",
+                value: "```Either Api Is Ofline Or Not Responding.```",
+              },
+            ],
+            footer: {
+              text: `Requested By ${interaction.user.username} | Tạo bởi ${madeby}`,
+            },
+          },
+        ],
+      });
+    }
+  } else {
+    await interaction.editReply({
+      embeds: [
+        {
+          title: "Invalid Valyse Link",
+          fields: [{ name: "Link", value: `${box}${link}${box}` }],
+        },
+      ],
+    });
+  }
+}
+
+async function evon(interaction) {
+  const link = interaction.options.getString("link");
+  const box = "```";
+
+  await interaction.reply({
+    embeds: [
+      {
+        title: "Getting Whitelist Evon Key",
+        thumbnail: {
+          url: "https://cdn.discordapp.com/attachments/1222430999552589865/1226398482114285650/Q1UBQVf.png?ex=66249f97&is=66122a97&hm=4849ff1425f45afff62e0bc3ce7a8a03a5293bf9ce4c5dbc9bd9caed459c0f3c&",
+        },
+        fields: [{ name: "Status", value: "```May take a while...```" }],
+      },
+    ],
+  });
+
+  if (
+    link.startsWith(
+      "https://pandadevelopment.cloud/getkey?service=evon&hwid="
+    ) ||
+    link.startsWith("https://pandadevelopment.net/getkey?service=evon&hwid=")
+  ) {
+    const matchhwid = link.match(/&location=([^&]*)/);
+    const hwid = matchhwid[1];
+    const apiUrl = `https://stickx.top/api-evon/?hwid=${hwid}&api_key=${apikey}`;
+
+    try {
+      const start = Date.now();
+      const response = await axios.get(apiUrl);
+      const end = Date.now();
+      const time = (end - start) / 1000;
+      function calculateSecondsLeft(hours) {
+        const millisecondsInHour = 3600000; // 1 hours = 3600000 milliseconds
+        return hours * 3600; // 1 hours = 3600 milliseconds
+      }
+
+      const hours = 12;
+      const remainingSeconds = calculateSecondsLeft(hours);
+
+      const currentTime = Math.floor(Date.now() / 1000);
+      const targetTime = currentTime + remainingSeconds;
+
+      const discordTimestamp = `<t:${targetTime}:R>`;
+      if (response.data.key) {
+        await interaction.editReply({
+          embeds: [
+            {
+              title: "Successfully Got Evon Key ",
+              thumbnail: {
+                url: "https://cdn.discordapp.com/attachments/1222430999552589865/1226398482114285650/Q1UBQVf.png?ex=66249f97&is=66122a97&hm=4849ff1425f45afff62e0bc3ce7a8a03a5293bf9ce4c5dbc9bd9caed459c0f3c&",
+              },
+              fields: [
+                {
+                  name: "Status:",
+                  value: `${box}${response.data.key}${box}`,
+                },
+                { name: "HWID:", value: `${box}${hwid}${box}` },
+                { name: "Time Taken:", value: `${box}${time} Seconds${box}` },
+                {
+                  name: "Invalid Whitelist:",
+                  value: `You has ${discordTimestamp} to end Whitelist`,
+                },
+              ],
+              footer: {
+                text: `Requested By ${interaction.user.username} | Tạo bởi ${madeby}`,
+              },
+            },
+          ],
+        });
+      } else {
+        await interaction.editReply({
+          embeds: [
+            {
+              title: "Failed To Get Evon Key",
+              thumbnail: {
+                url: "https://cdn.discordapp.com/attachments/1222430999552589865/1226398482114285650/Q1UBQVf.png?ex=66249f97&is=66122a97&hm=4849ff1425f45afff62e0bc3ce7a8a03a5293bf9ce4c5dbc9bd9caed459c0f3c&",
+              },
+              fields: [
+                {
+                  name: "Status:",
+                  value: "```Either Hwid Is Invalid Or Api Is Not Working.```",
+                },
+                { name: "ID:", value: `${box}${deviceid}${box}` },
+              ],
+              footer: {
+                text: `Requested By ${interaction.user.username} | Tạo bởi ${madeby}`,
+              },
+            },
+          ],
+        });
+      }
+    } catch (error) {
+      console.log(error);
+      await interaction.editReply({
+        embeds: [
+          {
+            title: "Failed To Get Evon Key",
+            thumbnail: {
+              url: "https://cdn.discordapp.com/attachments/1222430999552589865/1226398482114285650/Q1UBQVf.png?ex=66249f97&is=66122a97&hm=4849ff1425f45afff62e0bc3ce7a8a03a5293bf9ce4c5dbc9bd9caed459c0f3c&",
+            },
+            fields: [
+              {
+                name: "Status:",
+                value: "```Either Api Is Ofline Or Not Responding.```",
+              },
+            ],
+            footer: {
+              text: `Requested By ${interaction.user.username} | Tạo bởi ${madeby}`,
+            },
+          },
+        ],
+      });
+    }
+  } else {
+    await interaction.editReply({
+      embeds: [
+        {
+          title: "Invalid Evon Link",
+          fields: [{ name: "Link", value: `${box}${link}${box}` }],
+        },
+      ],
+    });
+  }
+}
+
+async function keyrblx(interaction) {
+  const link = interaction.options.getString("link");
+  const box = "```";
+
+  await interaction.reply({
+    embeds: [
+      {
+        title: "Getting Whitelist Keyrblx Key",
+        thumbnail: {
+          url: "https://cdn.discordapp.com/attachments/1222430999552589865/1226736006020206692/B7AfAe3.webp?ex=6625d9ef&is=661364ef&hm=67279b940ee0ca55f1b5aead2efaeaad681417c5ec4ed2b6478b0ff8b2f26c6f&",
+        },
+        fields: [{ name: "Status", value: "```May take a while...```" }],
+      },
+    ],
+  });
+
+  if (
+    link.startsWith("https://keyrblx.com/getkey/") ||
+    link.startsWith("keyrblx.com/getkey/")
+  ) {
+    const match = link.match(/\/([^\/?]+)\?([^=]+)=([^&]+)/);
+    const NameHub = match[1];
+    const hwid = match[3];
+
+    const apiUrl = `https://stickx.top/api-rblx/?hub=${NameHub}&hwid=${hwid}&api_key=${apikey}`;
+
+    try {
+      const start = Date.now();
+      const response = await axios.get(apiUrl);
+      const end = Date.now();
+      const time = (end - start) / 1000;
+      function calculateSecondsLeft(hours) {
+        const millisecondsInHour = 3600000; // 1 hours = 3600000 milliseconds
+        return hours * 3600; // 1 hours = 3600 milliseconds
+      }
+
+      const hours = 12;
+      const remainingSeconds = calculateSecondsLeft(hours);
+
+      const currentTime = Math.floor(Date.now() / 1000);
+      const targetTime = currentTime + remainingSeconds;
+
+      const discordTimestamp = `<t:${targetTime}:R>`;
+      if (response.data.key) {
+        await interaction.editReply({
+          embeds: [
+            {
+              title: "Successfully Got Keyrblx Key ",
+              thumbnail: {
+                url: "https://cdn.discordapp.com/attachments/1222430999552589865/1226736006020206692/B7AfAe3.webp?ex=6625d9ef&is=661364ef&hm=67279b940ee0ca55f1b5aead2efaeaad681417c5ec4ed2b6478b0ff8b2f26c6f&",
+              },
+              fields: [
+                {
+                  name: "Status:",
+                  value: `${box}${response.data.key}${box}`,
+                },
+                { name: "HWID:", value: `${box}${hwid}${box}` },
+                { name: "Hub Name:", value: `${box}${NameHub}${box}` },
+                { name: "Time Taken:", value: `${box}${time} Seconds${box}` },
+                {
+                  name: "Invalid Whitelist:",
+                  value: `You has ??:?? to end Whitelist`,
+                },
+              ],
+              footer: {
+                text: `Requested By ${interaction.user.username} | Tạo bởi ${madeby}`,
+              },
+            },
+          ],
+        });
+      } else {
+        await interaction.editReply({
+          embeds: [
+            {
+              title: "Failed To Get Keyrblx Key",
+              thumbnail: {
+                url: "https://cdn.discordapp.com/attachments/1222430999552589865/1226736006020206692/B7AfAe3.webp?ex=6625d9ef&is=661364ef&hm=67279b940ee0ca55f1b5aead2efaeaad681417c5ec4ed2b6478b0ff8b2f26c6f&",
+              },
+              fields: [
+                {
+                  name: "Status:",
+                  value: "```Either Hwid Is Invalid Or Api Is Not Working.```",
+                },
+                { name: "ID:", value: `${box}${deviceid}${box}` },
+              ],
+              footer: {
+                text: `Requested By ${interaction.user.username} | Tạo bởi ${madeby}`,
+              },
+            },
+          ],
+        });
+      }
+    } catch (error) {
+      console.log(error);
+      await interaction.editReply({
+        embeds: [
+          {
+            title: "Failed To Get Keyrblx Key",
+            thumbnail: {
+              url: "https://cdn.discordapp.com/attachments/1222430999552589865/1226736006020206692/B7AfAe3.webp?ex=6625d9ef&is=661364ef&hm=67279b940ee0ca55f1b5aead2efaeaad681417c5ec4ed2b6478b0ff8b2f26c6f&",
+            },
+            fields: [
+              {
+                name: "Status:",
+                value: "```Either Api Is Ofline Or Not Responding.```",
+              },
+            ],
+            footer: {
+              text: `Requested By ${interaction.user.username} | Tạo bởi ${madeby}`,
+            },
+          },
+        ],
+      });
+    }
+  } else {
+    await interaction.editReply({
+      embeds: [
+        {
+          title: "Invalid Keyrblx Link",
+          fields: [{ name: "Link", value: `${box}${link}${box}` }],
+        },
+      ],
+    });
+  }
+}
+
+async function linkvertise(interaction) {
+  const link = interaction.options.getString("link");
+  const box = "```";
+
+  await interaction.reply({
+    embeds: [
+      {
+        title: "Getting Linkvertise",
+        thumbnail: {
+          url: "https://cdn.discordapp.com/attachments/1222430999552589865/1225844259534672004/UuazBcn.gif?ex=66229b6e&is=6610266e&hm=0cbbd63417e6e9891f18d23b75e5b1fb572cc1e16fde7ab1d245f8144c9e4e51&",
+        },
+        fields: [{ name: "Status", value: "```May take a while...```" }],
+      },
+    ],
+  });
+
+  const apiUrl = `https://selected-physically-sunbeam.ngrok-free.app/?url=${link}&api_key=${apikeyshoukohub}`;
+
+  try {
+    const start = Date.now();
+    const response = await axios.get(apiUrl);
+    const end = Date.now();
+    const time = (end - start) / 1000;
+    const getresponseurl = response.data;
+    if (getresponseurl.result) {
+      await interaction.editReply({
+        embeds: [
+          {
+            title: `Successfully Got Linkvertise Link`,
+            thumbnail: {
+              url: image,
+            },
+            fields: [
+              { name: "Status:", value: `${box}Success${box}` },
+              {
+                name: "Link:",
+                value: `${box}${getresponseurl.result}${box}`,
+              },
+              { name: "Time Taken:", value: `${box}${time} Seconds${box}` },
+              {
+                name: "🔗Link Bio:",
+                value: `[Click Me](${getresponseurl.bypassed})`,
+              },
+            ],
+            footer: {
+              text: `Requested By ${interaction.user.username} | Tạo bởi ${madeby}`,
+            },
+          },
+        ],
+      });
+    } else if (getresponseurl.error) {
+      await interaction.editReply({
+        embeds: [
+          {
+            title: "Invalid Linkvertise",
+            fields: [
+              {
+                name: "Link",
+                value: `${box}${link}${box}`,
+              },
+              {
+                name: "Support",
+                value: `Linkvertise`,
+              },
+            ],
+          },
+        ],
+      });
+    }
+  } catch (error) {
+    console.log(error);
+    await interaction.editReply({
+      embeds: [
+        {
+          title: "Failed To Get Ad Links",
+          thumbnail: {
+            url: "https://cdn.discordapp.com/attachments/1222430999552589865/1225844259534672004/UuazBcn.gif?ex=66229b6e&is=6610266e&hm=0cbbd63417e6e9891f18d23b75e5b1fb572cc1e16fde7ab1d245f8144c9e4e51&",
+          },
+          fields: [
+            {
+              name: "Status:",
+              value: "```Either Api Is Ofline Or Not Responding.```",
+            },
+          ],
+          footer: {
+            text: `Requested By ${interaction.user.username} | Tạo bởi ${madeby}`,
+          },
+        },
+      ],
+    });
+  }
+}
+/*
+async function status(interaction) {
+
+}
+*/
+client.login(token);
+}
+</script>
+</body>
+</html>
